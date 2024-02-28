@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <link rel="stylesheet" href="CSS_COFFEE/home.css">
+    <!-- Google Fonts Links For Icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+  </head>
+  <body>
+    <header th:replace="~{_fragmentCoffee::head}"></header>
+
+    <section class="hero-section">
+      <div class="content">
+        <h2>Start Your Day With Fresh Coffee</h2>
+        <p>
+          Coffee is a popular and beloved beverage enjoyed by 
+          people around the world.Awaken your senses with a steaming cup of liquid motivation.
+        </p>
+        <button><a th:href="@{/order}">Order Now</a></button>
+      </div>
+    </section>
+
+    
+    
+  </body>
+</html>

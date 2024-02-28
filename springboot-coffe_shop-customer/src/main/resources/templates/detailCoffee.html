@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Product</title>
+    <link rel="stylesheet" href="CSS_COFFEE/detail-coffee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header th:replace="~{_fragmentCoffee::head}"></header>	
+
+      <div class="container">
+        <div class="img-product">
+            <img class="traNhietDoi" src="Hinh_Coffee/traNhietDoi.webp"> 
+        </div>
+
+        <div>
+            <h1>Trà Thanh Đào Nhiệt Đới </h1>
+            <div class="price">49.000 đ</div>
+            <div class="size">
+            <div>Chọn Size:</div>
+            <button>Nhỏ 0đ</button>
+            <button>Vừa 5.000đ</button>
+            <button>Lớn 10.000đ</button>
+            </div>
+            <div>Địa Điểm Dùng Món:</div>
+            <div class="checkbox-container">
+            <label for="checkbox1" class="checkbox-label">
+                <input name="foodPlace" type="radio" id="checkbox1" class="checkbox" checked> Giao Hàng Tận Nơi
+            </label>
+            </div>
+            <div class="checkbox-container">
+            <label for="checkbox2" class="checkbox-label">
+                <input name="foodPlace" type="radio" id="checkbox2" class="checkbox"> Đến Trực Tiếp Cửa Hàng Nhận
+            </label>
+             </div>
+
+            <div>
+            <label for="store">Chọn Chi Nhánh Cửa Hàng:</label>
+                <select id="store" name="store" class="store">
+                    <option value="dongKhoi">Đồng Khởi</option>
+                    <option value="auCo">Âu Cơ</option>
+                    <option value="hongBnag">Hồng Bàng</option>
+                    <option value="CMT8">Cách Mạng Tháng 8</option>
+                    <option value="CMT8">Nguyễn Thị Thập</option>
+                </select>
+            </div>
+
+            <a href="cart-product.html">
+                <div class="order">
+                    <button class="order">Đặt Hàng</button>
+                </div>
+            </a>
+        </div>
+      </div>
+
+      <div class="contact" id="contact">
+        <div class="contact-box">
+            <div class="contact-image">
+                <img src="Hinh_Coffee/khong_gian_coffee.jpg">
+            </div>
+        </div>
+        <div class="contact-box">
+            <div class="contact-body">
+                <form>
+                    <h2>Chi Nhánh Của Chúng Tôi</h2>
+                    <div class="form-content">
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>130 Đồng Khởi Phường 11 Q.1 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>489 Âu Cơ Phường 11 Q.Tân Phú TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>49 Hồng Bàng Phường 2 Q.10 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>78 CMT8 Phường 7 Q.3 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i> 391 Nguyễn Thị Thập P.Tân Thuận Tây Q.7 TP.HCM</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="footer-box">
+            <div class="social-media">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+           
+            <div class="brand">
+                <h2>COFFEE!</h2>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/detailCoffe.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    z-index: 200;
+    background-color: #545454;
+    
+  }
+  
+  header .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .navbar .logo {
+    color: #fff;
+    font-weight: 600;
+    font-size: 2.1rem;
+    text-decoration: none;
+  }
+  
+  .navbar .logo span {
+    color: #C06B3E;
+  }
+  
+  .navbar .menu-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.2s ease;
+  }
+  
+  .navbar a:hover {
+    color: #C06B3E;
+  }
+
+
+body{
+    background-color: #545454;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.header1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 150px;
+
+}
+ .full{
+    display: grid;
+    grid-template-columns: 480px 480px 480px;
+    margin-left: 10px;
+    
+ }
+
+ .logo {
+    color: #fff;
+    font-weight: 600;
+    font-size: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    padding-top: 30px;
+}
+
+.header1 .logo span {
+    color: #C06B3E;
+}
+
+.logo:hover {
+    color: #C06B3E;
+}
+
+.brand{
+    color: orange;
+}
+
+.feedback input{
+    width: 500px;
+    height: 50px;
+    border-radius: 2px;
+    border-width: 1px;
+    padding-left: 10px;
+}
+
+.feedback button{
+    font-weight: bold;   
+    font-size: 16px; 
+    font-family: Arial, sans-serif; 
+    color: orange;
+    margin-top: 18px;
+    height: 53px;
+    margin-left: -2px;
+    border-radius: 2px;
+    border-width: 1px;
+    padding: 0 15px 0 15px;
+}
+
+.feedBack-img{
+    width: 155px;
+    margin-top: -15px;
+}
+
+.mid{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    padding: 15px 0 15px 0 ;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.user{
+    font-weight: bold;
+    font-size: 19px;
+}
+.date{
+    font-size: 15px;
+    color: rgb(134, 134, 134);
+}
+
+.star{
+    color: rgb(250, 250, 30);
+}
+
+.thanhnhi-img{
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 50%;
+    padding-left: 5px;
+
+}
+
+.container{
+    padding-left: 15px;
+    font-size: 25px;
+}
+
+.Content{
+    font-size: 22px;
+}

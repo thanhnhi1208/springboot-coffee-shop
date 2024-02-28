@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS_COFFEE/menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Menu Coffee</title>
+</head>
+
+<body>
+
+    <header th:replace="~{_fragmentCoffee::head}"></header>	
+<!-- Best Seller -->
+
+
+    <div class="best" id="best">
+        <div class="best-header">
+            <h1>Best Seller</h1>
+        </div>
+        <div class="best-content">
+            <div class="hot-coffees">
+                <div class="hot-coffees-image">
+                    <img class="hot-coffees-image" src="Hinh_Coffee/hot-coffees.jpg" alt="">
+                </div>
+                <div class="hot-coffees-body">
+                    <h2>Hot Coffees</h2>
+                    <label>Nhấm nháp tách hot coffee ấm áp, bạn không chỉ uống cà phê, mà còn uống sự hứng khởi, sự tận hưởng cuộc sống và những chân lý đắng cay của ngày mới!</label>
+                </div>
+            </div>
+            <div class="cold-coffees">
+                <div class="cold-coffees-image">
+                    <img class="cold-coffees-image" src="Hinh_Coffee/cold-coffees.jpg" alt="">
+                </div>
+                <div class="cold-coffees-body">
+                    <h2>Cold Coffees</h2>
+                    <label>Nước cà phê lạnh là một chuyến phiêu lưu mới của hương vị, nơi hòa quyện giữa sự tươi mới của đá và hương thơm nồng nàn của cà phê!</label>
+                </div>
+            </div>
+            <div class="frappucino-coffees">
+                <div class="frappucino-coffees-image">
+                    <img class="frappucino-coffees-image" src="Hinh_Coffee/frappuccino.jpg" alt="">
+                </div>
+                <div class="frappucino-coffees-body">
+                    <h2>Frappucino Coffees</h2>
+                    <label>Frappucino là một tác phẩm nghệ thuật đầy sáng tạo, là nguồn cảm hứng cho những khoảnh khắc thoải mái và thưởng thức cuộc sống!</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="shop" id="shop">
+        <div class="shop-header">
+            <h1>Menu</h1>
+            <h1>Coffee Drinks</h1>
+        </div>
+        <div class="shop-box">
+            <div class="item-1">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="Hinh_Coffee/caramel-macchiato.jpg">
+                    </div>
+                    <div class="card-body">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half"></i>
+                        <label class="cash">4.45$</label>
+                        <h3>Caramel Macchiato</h3>
+                        <label>Cà phê espresso.</label>
+                        <label>Sữa tươi.</label>
+                        <label>Caramel.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="item-2">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="Hinh_Coffee/flat-white.png">
+                    </div>
+                    <div class="card-body">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <label class="cash">3.75$</label>
+                        <h3>Flat White</h3>
+                        <label>Espresso.</label>
+                        <label>Sữa sánh.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="item-3">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="Hinh_Coffee/chocolate-frappuccino.png">
+                    </div>
+                    <div class="card-body">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half"></i>
+                        <label class="cash">3.95$</label>
+                        <h3>Chocolate Frappucino</h3>
+                        <label>Sữa tươi. 
+                            Bột Cacao.
+                            Kem tươi.
+                            Đá nhuyễn.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="item-4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="Hinh_Coffee/frappe.jpg">
+                    </div>
+                    <div class="card-body">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <label class="cash">2.79$</label>
+                        <h3>Frappe</h3>
+                        <label>Cà phê hòa tan.                           
+                            Sữa tươi.
+                            Kem tươi. 
+                            Đá nhuyễn.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="item-5">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="Hinh_Coffee/caffe-mocha.png">
+                    </div>
+                    <div class="card-body">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half"></i>
+                        <label class="cash">3.45$</label>
+                        <h3>Caffe Mocha</h3>
+                        <label>Cà phê Espresso.
+                            Bột cacao.                          
+                            Sữa tươi.
+                            Kem tươi.
+                            Sô-cô-la.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="item-6">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="Hinh_Coffee/vanilla-frappuccino.jpg">
+                    </div>
+                    <div class="card-body">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <label class="cash">3.25$</label>
+                        <h3>Vanilla Frappucino</h3>
+                        <label>Cà phê Espresso.
+                            Sữa tươi.
+                            Vani.
+                            Đá nhuyễn.                          
+                            Kem tươi.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="item-7">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="Hinh_Coffee/white-chocolate-mocha.jpg">
+                    </div>
+                    <div class="card-body">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half"></i>
+                        <label class="cash">6.60$</label>
+                        <h3>White Chocolate Mocha</h3>
+                        <label>Cà phê Espresso.
+                            Sữa tươi.
+                            White Chocolate Chips.
+                            Vani.
+                            Kem tươi.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="item-8">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="Hinh_Coffee/ice-latte.jpg">
+                    </div>
+                    <div class="card-body">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <label class="cash">5.65$</label>
+                        <h3>Ice Latte</h3>
+                        <label>Cà phê Espresso.
+                            Sữa tươi.
+                            Đá viên.
+                           </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="shop-header">
+                <h1>Menu</h1>
+                <h1>Tea Drinks</h1>
+            </div>
+            <div class="shop-box">
+                <div class="item-9">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/traCamSa.webp">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <label class="cash">4.21$</label>
+                            <h3>Trà Đào Cam Sả</h3>
+                            <label>Trà Thanh Nhiệt.
+                                Cam.
+                                Sả.
+                                Đào Lát.
+                                Đá viên.
+                               </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-10">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/traSen.webp">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <label class="cash">4.21$</label>
+                            <h3>Trà Sen Long Nhãn</h3>
+                            <label>Trà Thanh Nhiệt.
+                                Long Nhãn.
+                                Sả.
+                                Sen Hạt.
+                                Đá viên.
+                               </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-11">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/traCamQue.webp">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <label class="cash">3.82$</label>
+                            <h3>Trà Cam Quế</h3>
+                            <label>Trà Thanh Nhiệt.
+                                Cam.       
+                                Quế.
+                                Đá viên.
+                               </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-12">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/traDau.webp">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <label class="cash">3.82$</label>
+                            <h3>Trà Dâu Nha Đam</h3>
+                            <label>Trà Thanh Nhiệt.
+                                Dâu Tươi.       
+                                Nha Đam.
+                                Đá viên.
+                               </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-13">
+                    <div class="card">
+
+                        <a href="detailCoffee.html">
+                            <div class="card-image">
+                                <img src="Hinh_Coffee/traNhietDoi.webp">
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <label class="cash">5.65$</label>
+                            <h3>Trà Thanh Đào Nhiệt Đới</h3>
+                            <label>Trà Thanh Nhiệt.
+                                Dâu Tươi.       
+                                Nha Đam.
+                                Đào Lát.
+                                Cam Tươi.
+                                Đá viên.
+                               </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-13">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/traChanh.webp">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <label class="cash">2.92$</label>
+                            <h3>Trà Chanh</h3>
+                            <label>Trà Thanh Nhiệt.
+                                Chanh Tươi.
+                                Đá Viên.
+                               </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-14">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/traHoaCuc.webp">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <label class="cash">3.45$</label>
+                            <h3>Trà Hoa Cúc Long Nhãn</h3>
+                            <label>Trà Lá pha nóng.
+                                Hoa Cúc.
+                                Long Nhãn.
+                               </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-15">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/traHoaHong.webp">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <label class="cash">4.30$</label>
+                            <h3>Trà Hoa Hồng</h3>
+                            <label>Trà Lá pha nóng.
+                                Hoa Hồng.
+                               </label>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+
+            <div class="shop-header">
+                <h1>Menu</h1>
+                <h1>Cake</h1>
+            </div>
+
+            <div class="shop-box">
+                <div class="item-16">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/matcha.png">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half"></i>
+                            <label class="cash">1.98$</label>
+                            <h3>MatCha Cake</h3>
+                            <label>Sự hoàn hảo cho người yêu trà xanh.</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-17">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/chocolate.png">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <label class="cash">1.45$</label>
+                            <h3>Chocolate Cake</h3>
+                            <label>Sự thư giãn đắm chìm trong ngọt ngào và đắng chín.</label>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="item-18">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/chanhDay.jpg">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half"></i>
+                            <label class="cash">1.59$</label>
+                            <h3>Phô Mai Chanh Dây</h3>
+                            <label>Hòa quyện giữa hương vị phô mai và tươi mát của chanh dây. </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-19">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/caramel.jpg">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <label class="cash">1.55$</label>
+                            <h3>Caramel Cake</h3>
+                            <label>Sự hòa quyện hoàn hảo giữa Ngọt ngào và béo ngậy.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shop-header">
+                <h1>Menu</h1>
+                <h1>Coffee Phin</h1>
+            </div>
+
+            <div class="shop-box">
+                <div class="item-16">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/cafeHat1.jpg">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half"></i>
+                            <label class="cash">4.11$</label>
+                            <h3>Cafe Hạt 100% Arabica Yirgacheffe Ethiopia</h3>
+                            <label>Ethiopia có mùi thơm đặc trưng của của hoa cỏ dại, vị chanh, đào, mận, rượu trắng.</label>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="shop-box">
+                <div class="item-16">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/cafeHat2.webp">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half"></i>
+                            <label class="cash">4.45$</label>
+                            <h3>Cafe Hạt Mr. White 3</h3>
+                            <label>Cafe phối hợp nhiều loại khác nhau như Arabica Cầu Đất, Robusta Daklak, Culi Daklak , nên có hương thơm rất phong phú.</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="shop-box">
+                <div class="item-16">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/cafeHat3.webp">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half"></i>
+                            <label class="cash">5.23$</label>
+                            <h3>Cafe Hạt 100% Arabica Catimor Cầu Đất Đà Lạt</h3>
+                            <label>Cafe Cầu Đất được dày công ủ suốt một tháng dưới cái nắng nhẹ để hạt cafe thấm nhuần vị men trái cây từ quả cafe. </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shop-box">
+                <div class="item-16">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Hinh_Coffee/cafeHat4.webp">
+                        </div>
+                        <div class="card-body">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half"></i>
+                            <label class="cash">3.72$</label>
+                            <h3>Cafe Robusta Đăk Lăk</h3>
+                            <label>Robusta có hương vị đặc trưng của gỗ và đất, hàm lượng cafein cao, vị đắng đậm, pha espresso có cấu trúc dày, an toàn tuyệt đối với sức khoẻ. </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+    <div class="contact" id="contact">
+        <div class="contact-box">
+            <div class="contact-image">
+                <img src="Hinh_Coffee/khong_gian_coffee.jpg">
+            </div>
+        </div>
+        <div class="contact-box">
+            <div class="contact-body">
+                <form>
+                    <h2>Chi Nhánh Của Chúng Tôi</h2>
+                    <div class="form-content">
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>130 Đồng Khởi Phường 11 Q.1 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>489 Âu Cơ Phường 11 Q.Tân Phú TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>49 Hồng Bàng Phường 2 Q.10 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>78 CMT8 Phường 7 Q.3 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i> 391 Nguyễn Thị Thập P.Tân Thuận Tây Q.7 TP.HCM</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="footer-box">
+            <div class="social-media">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+           
+            <div class="brand">
+                <h2>COFFEE!</h2>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

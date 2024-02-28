@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{_fragment::head}">
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul th:replace="~{_fragment::sidebar}"></ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav th:replace="~{_fragment::topbar}"></nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                    <button ty 	pe="button" class="btn btn-primary" data-toggle="modal" data-target="#insertModal" data-whatever="@mdo">Thêm Sản Phẩm</button>
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Hình Ảnh</th>
+                                            <th>Tên Sản Phẩm</th>
+                                            <th>Thể Loại</th>
+                                            <th>Số Lượng</th>
+                                            <th>Giá</th>
+                                            <th>Sale</th>
+                                            <th>Thao Tác</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Hình Ảnh</th>
+                                            <th>Tên Sản Phẩm</th>
+                                            <th>Thể Loại</th>
+                                            <th>Số Lượng</th>
+                                            <th>Giá</th>
+                                            <th>Sale</th>
+                                            <th>Thao Tác</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										<tr th:each="product:${productList}">
+											<td>
+												<img style="width: 70px;" th:src="'data:image/jpeg;base64,' + ${product.image}">
+											</td>
+											<td th:text="${product.name}"></td>
+											<td th:text="${product.category.name}"></td>
+											<td th:text="${product.quantity}"></td>
+											<td th:text="${product.price}"></td>
+											<td th:text="${product.sale_price}"></td>
+											<td>
+												<a th:href="@{/product/delete(id = ${product.id})}" > Xoá</a>,
+												<a class="editButton" th:href="@{/product/findById(id = ${product.id})}" data-toggle="modal" data-target="#editModal" data-whatever="@mdo">Chỉnh Sửa</a>
+											</td>
+										</tr>
+									</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+           <!-- Footer -->
+			<footer th:fragment="footer" class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; Your Website 2021</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+	
+	<!-- Scroll to Top Button-->
+    <a th:fragment="scroll" class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <div th:replace="~{_fragment::js}"></div>
+    
+    <!--Insert Modal-->
+    <div class="modal fade bd-example-modal-lg" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Thêm Sản Phẩm Mới</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+			 
+	        <form method="post" th:action="@{/product/add}" enctype="multipart/form-data">
+				<table style="width: 100%;">
+				 <tr>
+					 <td style="padding-right: 20px;">
+						 <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Tên Sản Phẩm:</label>
+				            <input name="name" type="text" class="form-control" id="recipient-name" required>
+				          </div>
+				          
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Thể Loại:</label>
+				            <select name="category" class="form-control" id="recipient-name" >
+								<option th:each="category:${categoryList}" th:text="${category.name}" th:value="${category.id}"></option>
+							</select>
+				          </div>
+				          
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Số Lượng:</label>
+				            <input name="quantity" type="text" class="form-control" id="recipient-name">
+				          </div>
+				          
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Giá:</label>
+				            <input name="price" type="text" class="form-control" id="recipient-name" required>
+				          </div>
+					 </td>
+					 <td>
+						 <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Sale:</label>
+				            <input name="sale_price" type="text" class="form-control" id="recipient-name" value="0" >
+				          </div>
+				          
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Mô Tả:</label>
+				            <input name="discription" type="text" class="form-control" id="recipient-name" >
+				          </div>
+				          
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Hình Ảnh:</label>
+				            <input name="imageOfProduct" type="file" class="form-control" id="image-file" required>
+				            <img id="image" style="width: 100px; " src="" alt="your image" />
+				          </div>
+					 </td>
+				 </tr>
+			 </table>
+	          
+	          
+	          
+	           <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+		        <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
+		      </div>
+	        </form>
+	      </div>
+	     
+	    </div>
+	  </div>
+	</div>
+	
+	<!--Edit Modal-->
+    <div class="modal fade bd-example-modal-lg" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Chỉnh Sửa Sản Phẩm Mới</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+			 
+	        <form method="post" th:action="@{/product/edit}" enctype="multipart/form-data">
+				<table style="width: 100%;">
+					<input name="id" type="hidden" id="idEdit">
+				 <tr>
+					 <td style="padding-right: 20px;">
+						 <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Tên Sản Phẩm:</label>
+				            <input name="name" type="text" class="form-control" id="editName">
+				          </div>
+				          
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Thể Loại:</label>
+				            <select name="category" class="form-control" id="editCategory">
+								<option th:each="category:${categoryList}" th:text="${category.name}" th:value="${category.id}"></option>
+							</select>
+				          </div>
+				          
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Số Lượng:</label>
+				            <input name="quantity" type="text" class="form-control" id="editQuantity">
+				          </div>
+				          
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Giá:</label>
+				            <input name="price" type="text" class="form-control" id="editPrice">
+				          </div>
+					 </td>
+					 <td>
+						 <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Sale:</label>
+				            <input name="sale_price" type="text" class="form-control" id="editSale" value="0">
+				          </div>
+				          
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Mô Tả:</label>
+				            <input name="discription" type="text" class="form-control" id="editDiscription">
+				          </div>
+				          
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Hình Ảnh:</label>
+				            <input id="image-file-edit" name="imageOfProduct" type="file" class="form-control">
+				            <img id="image-edit" style="width: 100px; " src="" alt="your image" />
+				          </div>
+					 </td>
+				 </tr>
+			 </table>
+	          
+	          
+	          
+	           <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+		        <button type="submit" class="btn btn-primary">Chỉnh Sửa</button>
+		      </div>
+	        </form>
+	      </div>
+	     
+	    </div>
+	  </div>
+	</div>
+	
+	 
+
+    <!-- Page level plugins -->
+    <script th:src="@{/vendor/datatables/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+
+    <!-- Page level custom scripts -->
+    <script th:src="@{/js/demo/datatables-demo.js}"></script>
+	<script th:src="@{/js/product.js}"></script>
+</body>
+
+</html>
