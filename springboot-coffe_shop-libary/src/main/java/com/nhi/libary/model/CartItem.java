@@ -37,4 +37,6 @@ public class CartItem {
 	@JoinColumn(name = "product_id", referencedColumnName = "product_id")
 	private Product product;
 	
+	private String size;
+	
 }

@@ -24,6 +24,7 @@ public class ProductService {
 
 	public void addProduct(Product product, MultipartFile imageOfProduct) throws IOException {
 		product.setImage(Base64.getEncoder().encodeToString(imageOfProduct.getBytes()));
+		product.setExpired(false);
 		productRepository.save(product);
 	}
 
@@ -45,12 +46,22 @@ public class ProductService {
 		product_database.setDiscription(product.getDiscription());
 		
 		product_database.setPrice(product.getPrice());
-		product_database.setQuantity(product.getQuantity());
+		product_database.setExpired(product.isExpired());
 		product_database.setSale_price(product.getSale_price());
 		this.productRepository.save(product_database);
 	}
 
 	public Product findProductById(int id) {
 		return productRepository.findById(id).get();
+	}
+
+	public void expired(int id) {
+		Product product =  productRepository.findById(id).get();
+		if(product.isExpired() == false) {
+			product.setExpired(true);
+		}else {
+			product.setExpired(false);
+		}
+		this.productRepository.save(product);
 	}
 }

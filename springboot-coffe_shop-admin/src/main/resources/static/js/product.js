@@ -29,8 +29,9 @@ document.addEventListener('DOMContentLoaded', function(){
 				document.getElementById('editPrice').value = product.price;
 				document.getElementById('editSale').value = product.sale_price;
 				document.getElementById('editDiscription').value = product.discription;
-				document.getElementById('editQuantity').value = product.quantity;
 				document.getElementById('image-edit').src = 'data:image/jpeg;base64,' + product.image;
+			
+				
 			});
 		});
 	});

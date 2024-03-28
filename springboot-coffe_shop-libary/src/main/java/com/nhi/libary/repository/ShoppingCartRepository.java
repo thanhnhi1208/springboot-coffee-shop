@@ -6,4 +6,6 @@ import com.nhi.libary.model.ShoppingCart;
 
 public interface ShoppingCartRepository extends JpaRepository<ShoppingCart, Integer> {
 
+	
+
 }

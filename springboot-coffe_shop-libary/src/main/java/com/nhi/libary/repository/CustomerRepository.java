@@ -8,4 +8,8 @@ import com.nhi.libary.model.ShoppingCart;
 public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 
 	Customer findByEmail(String email);
+	
+	Customer findByPhoneNumber(String phoneNumber);
+	
+	Customer findByAccountNumber(String accountNumber);
 }

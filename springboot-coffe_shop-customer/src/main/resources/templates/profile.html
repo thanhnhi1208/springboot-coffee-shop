@@ -1,0 +1,145 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" th:href="@{/CSS_COFFEE/shipCoffee.css}">
+    <link rel="stylesheet" th:href="@{/CSS_COFFEE/profile.css}">
+    <link rel="stylesheet" th:href="@{/CSS_COFFEE/menu.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <header th:replace="~{_fragmentCoffee::head}"></header>
+
+      <div class="container">
+        <h2>Thông Tin Cá Nhân</h2>
+        <form th:action="@{profile/add}" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="id" th:value="${customer.id}">
+			<input type="hidden" name="shoppingCart" th:value="${customer.shoppingCart.id}">
+			<input type="hidden" name="password" th:value="${customer.password}">
+            <div class="form">
+                <div class="img-avt">
+                    <img id="image-edit" th:if="${customer.image != null}" th:src="'data:image/jpeg;base64,' + ${customer.image}">
+                    <img id="image-edit" th:if="${customer.image == null}" th:src="@{/img/avt-macdinh.jpg}">
+                    <input id="image-file-edit" type="file" name="imageOfCustomer" accept="image/png, image/gif, image/jpeg">
+                </div>
+
+                <div class="big-div-form">
+                    <div class="div-form">
+                        <label for="name">Họ Và Tên: </label>
+                        <input th:value="${customer.fullName}" id="name" type="text" name="fullName">
+                    </div>
+
+                    <div class="div-form">
+                        <label for="phone-number">Số Điện Thoại: </label>
+                        <input th:value="${customer.phoneNumber}" id="phone-number" type="text" name="phoneNumber">
+                    </div>
+
+                    <div class="div-form">
+                        <label for="email">Email: </label>
+                        <input th:value="${customer.email}" id="email" type="text" name="email" readonly>
+                    </div>
+
+                    <div class="div-form">
+                        <label for="gender">Giới Tính: </label>
+                        <div class="div-gender">
+                            <div>
+                                <input th:checked="${customer.gender == 'Nam' || customer.gender == null}"  type="radio" name="gender" checked id="male" value="Nam"> 
+                                <label for="male">Nam</label>
+                            </div>
+                            <div>
+                                <input th:checked="${customer.gender == 'Nữ'}" type="radio" name="gender" id="female" value="Nữ">
+                                <label for="female">Nữ</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="div-form">
+                        <label for="birth-day">Ngày Sinh: </label>
+                        <input th:value="${customer.birthDay}" id="birth-day" type="date" name="birthDay">
+                    </div>
+
+
+                    <div class="div-form">
+                        <label for="address">Địa Chỉ: </label>
+                        <input th:value="${customer.address}" id="address" type="text" name="address">
+                    </div>
+                    
+                    <div class="div-form">
+                        <label for="city">Thành Phố: </label>
+                        <select th:if="${customer.city != null}" th:value="${customer.city.id}" id="city"  name="city">
+                            <option th:each="city : ${cityList}" th:text="${city.name}" th:value="${city.id}"
+                            	th:selected="${customer.city.id == city.id}">
+                        	</option>
+                        </select>
+                        <select th:if="${customer.city == null}"  id="city"  name="city">
+                            <option th:each="city : ${cityList}" th:text="${city.name}" th:value="${city.id}">
+							</option>
+                        </select>
+                    </div>
+
+                    <div class="div-form">
+                        <label for="bank-name">Ngân Hàng: </label>
+                        <input th:value="${customer.bankName}" id="bank-name" type="text" name="bankName">
+                    </div>
+
+                    <div class="div-form">
+                        <label for="acc-bank">Số Tài Khoản: </label>
+                        <input th:value="${customer.accountNumber}" id="acc-bank" type="text" name="accountNumber">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="submit">Lưu</button>
+            </div>
+        </form>
+
+      </div>
+
+      <div class="contact" id="contact">
+        <div class="contact-box">
+            <div class="contact-image">
+                    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1rV9nht-pIwitN1Wg4duR9KOpdMows9Y&ehbc=2E312F" width="100%" height="600"></iframe>    
+
+            </div>
+        </div>
+        <div class="contact-box">
+            <div class="contact-body">
+                <form>
+                    <h2>Chi Nhánh Của Chúng Tôi</h2>
+                    <div class="form-content">
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>130 Đồng Khởi Bến Nghé Q.1 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>489 Âu Cơ Phường 9 Q.Tân Phú TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>49 Hồng Bàng Phường 9 Q.6 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>78 Cách Mạng Tháng 8 Phường 6 Q.3 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i> 391 Nguyễn Thị Thập P.Tân Phong Q.7 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i> 40 Thảo Điền P.Thảo Điền Q.2 TP.HCM</div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="footer-box">
+            <div class="social-media">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+           
+            <div class="brand">
+                <h2>COFFEE!</h2>
+            </div>
+        </div>
+    </div>
+    
+    <script th:src="@{/js/profile.js}"></script>
+</body>
+</html>

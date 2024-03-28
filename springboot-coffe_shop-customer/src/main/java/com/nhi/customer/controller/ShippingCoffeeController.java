@@ -7,29 +7,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.nhi.libary.repository.CustomerRepository;
-import com.nhi.libary.service.CategoryService;
-import com.nhi.libary.service.CustomerService;
-import com.nhi.libary.service.ProductService;
 
 @Controller
-public class MenuController {
-	@Autowired
-	private ProductService productService;
-	
-	@Autowired
-	private CategoryService categoryService;
+public class ShippingCoffeeController {
 	
 	@Autowired
 	private CustomerRepository customerRepository;
-	
-	@GetMapping("/menu")
-	public String menu(Model model, Authentication authentication) {
-		model.addAttribute("productList", productService.findAllProduct()) ;
-		model.addAttribute("categoryList", categoryService.findAllCategory()) ;
+
+
+	@GetMapping("/shipCoffee")
+	public String shippingCoffee(Model model, Authentication authentication) {
 		model.addAttribute("shoppingCart", customerRepository.findByEmail(authentication.getName()).getShoppingCart());
 		model.addAttribute("customer", customerRepository.findByEmail(authentication.getName()));
-		return "menuCoffee";
+		return "shipCoffee";
 	}
-
 }
-

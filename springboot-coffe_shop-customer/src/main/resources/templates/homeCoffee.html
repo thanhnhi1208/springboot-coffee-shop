@@ -5,12 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee Shop</title>
-    <link rel="stylesheet" href="CSS_COFFEE/home.css">
+    <link rel="stylesheet" th:href="@{/CSS_COFFEE/home.css}">
     <!-- Google Fonts Links For Icon -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <link rel="stylesheet" th:href="@{/CSS_COFFEE/menu.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <header th:replace="~{_fragmentCoffee::head}"></header>
+    <header class="home-header">
+		<nav class="navbar">
+        <a class="logo" th:href="@{/index}">Coffee<span>.</span></a>
+        <ul class="menu-links">
+         
+          <li><a th:href="@{/index}">Trang Chủ</a></li>
+          <li><a th:href="@{/menu}">Thực Đơn</a></li>
+           <li><a href="feedback.html">Yêu Thích Của Tôi</a></li>
+          
+
+        </ul>
+        
+      </nav>
+	</header>
+	
+	
 
     <section class="hero-section">
       <div class="content">
@@ -19,7 +38,7 @@
           Coffee is a popular and beloved beverage enjoyed by 
           people around the world.Awaken your senses with a steaming cup of liquid motivation.
         </p>
-        <button><a th:href="@{/order}">Order Now</a></button>
+        <button><a th:href="@{/menu}">Order Now</a></button>
       </div>
     </section>
 

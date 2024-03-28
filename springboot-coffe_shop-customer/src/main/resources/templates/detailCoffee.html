@@ -4,59 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Product</title>
-    <link rel="stylesheet" href="CSS_COFFEE/detail-coffee.css">
+    <link rel="stylesheet" th:href="@{/CSS_COFFEE/detail-coffee.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <link rel="stylesheet" th:href="@{/CSS_COFFEE/menu.css}">
 </head>
 <body>
     <header th:replace="~{_fragmentCoffee::head}"></header>	
+	<form method="POST" th:action="@{/addShoppingCart}">
+		<input id="price-size" type="hidden" th:value="${product.price}">
+		<input id="price" type="hidden" name="costPrice" th:value="${product.price}">
+		
+		<input id="price-sale-size" type="hidden" th:value="${product.sale_price}">
+		<input id="price-sale" type="hidden" name="sale_price" th:value="${product.sale_price}">
+		
+		<input type="hidden" name="quantity" value=1>
+		<input id="size" type="hidden" name="size" value="S">
+		<input  type="hidden" name="product" th:value="${product.id}">
+	      <div class="container">
+				<div class="img-product">
+		            <img  class="traNhietDoi" th:src="@{'data:image/jpeg;base64,' + ${product.image}}"> 
+		        </div>
+		
+		        <div>
+		            <h1 th:text="${product.name}"></h1>
+		            <div th:if="${product.sale_price ==0}" id="display-price" th:text="${#numbers.formatDecimal(product.price, 0, 'POINT', 0, 'POINT')} + 'VNĐ'" class="price"></div>
+		            <div th:if="${product.sale_price !=0}" id="display-price" th:text="${#numbers.formatDecimal(product.sale_price, 0, 'POINT', 0, 'POINT')} + 'VNĐ'" class="price"></div>
 
-      <div class="container">
-        <div class="img-product">
-            <img class="traNhietDoi" src="Hinh_Coffee/traNhietDoi.webp"> 
+		            <div class="size">
+		            <div>Chọn Size:</div>
+		            <button id="button-small" class="click-size"  type="button">Nhỏ 0đ</button>
+		            <button id="button-medium" type="button">Vừa 5.000đ</button>
+		            <button id="button-large" type="button">Lớn 10.000đ</button>
+		            </div>
+		            <div>Địa Điểm Dùng Món:</div>
+		            <div class="checkbox-container">
+		            <label for="checkbox1" class="checkbox-label">
+		                <input name="foodPlace" type="radio" id="checkbox1" class="checkbox" checked> Giao Hàng Tận Nơi
+		            </label>
+		            </div>
+		            
+		
+		                <div class="order">
+		                    <button type="submit" class="order">Đặt Hàng</button>
+		                </div>
+		        </div>
+	      </div>
+	</form>
+	
+	<div class="feedback">
+        <div class="product-ratings-header">
+            Đánh Giá Sản Phẩm
         </div>
-
-        <div>
-            <h1>Trà Thanh Đào Nhiệt Đới </h1>
-            <div class="price">49.000 đ</div>
-            <div class="size">
-            <div>Chọn Size:</div>
-            <button>Nhỏ 0đ</button>
-            <button>Vừa 5.000đ</button>
-            <button>Lớn 10.000đ</button>
-            </div>
-            <div>Địa Điểm Dùng Món:</div>
-            <div class="checkbox-container">
-            <label for="checkbox1" class="checkbox-label">
-                <input name="foodPlace" type="radio" id="checkbox1" class="checkbox" checked> Giao Hàng Tận Nơi
-            </label>
-            </div>
-            <div class="checkbox-container">
-            <label for="checkbox2" class="checkbox-label">
-                <input name="foodPlace" type="radio" id="checkbox2" class="checkbox"> Đến Trực Tiếp Cửa Hàng Nhận
-            </label>
-             </div>
-
-            <div>
-            <label for="store">Chọn Chi Nhánh Cửa Hàng:</label>
-                <select id="store" name="store" class="store">
-                    <option value="dongKhoi">Đồng Khởi</option>
-                    <option value="auCo">Âu Cơ</option>
-                    <option value="hongBnag">Hồng Bàng</option>
-                    <option value="CMT8">Cách Mạng Tháng 8</option>
-                    <option value="CMT8">Nguyễn Thị Thập</option>
-                </select>
+        
+        <div class="customer-ratings">
+            <div class="customer-avt">
+                <img class="avt" src="img/thanhnhi.jpg">
             </div>
 
-            <a href="cart-product.html">
-                <div class="order">
-                    <button class="order">Đặt Hàng</button>
+            <div class="customer-feedback">
+                <div class="customer-name">
+                    @thanhnhi.1208
                 </div>
-            </a>
-        </div>
-      </div>
+                
+                <div class="time-feedback">
+                    20:13 25-02-2023
+                </div>
 
+                <div class="feedback">
+                    Mỗi nhân viên đều tỏ ra chuyên nghiệp và am hiểu về các loại cà phê, 
+                    giúp khách hàng lựa chọn được thức uống phù hợp với khẩu vị của họ.
+                </div>
+
+                <div class="image-container">
+                    <img class="feedback-img" src="Hinh_Coffee/feedback-img3.jpg">
+                    <img class="feedback-img" src="Hinh_Coffee/feedback-img4.jpg">
+                    <img class="feedback-img" src="Hinh_Coffee/feedback-img5.jpg">
+                </div>
+            </div>
+        </div>
+
+        <div class="customer-ratings">
+            <div class="customer-avt">
+                <img class="avt" src="img/hokhanh.jpg">
+            </div>
+
+            <div class="customer-feedback">
+                <div class="customer-name">
+                    @hokhanh.2007
+                </div>
+                
+                <div class="time-feedback">
+                    06:13 01-02-2024
+                </div>
+
+                <div class="feedback">
+                    Wifi mạnh và ổn định, làm cho quán trở thành nơi lý tưởng để làm việc hoặc họp nhóm.
+                </div>
+
+                <div class="image-container">
+                    <img class="feedback-img" src="Hinh_Coffee/feedback-img1.jpg">
+                    <img class="feedback-img" src="Hinh_Coffee/feedback-img2.jpg">
+                </div>
+            </div>
+        </div>
+
+      </div>
+	
       <div class="contact" id="contact">
         <div class="contact-box">
             <div class="contact-image">

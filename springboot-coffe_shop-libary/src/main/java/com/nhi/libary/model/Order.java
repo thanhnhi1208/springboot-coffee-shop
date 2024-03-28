@@ -31,7 +31,13 @@ public class Order {
 	private int quantity;
 	private double totalPrice;
 	
+	private String fullName;
+	private String phoneNumber;
+	private String address;
+	
 	@ManyToOne
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
 	private Customer customer;
+	
+	
 }

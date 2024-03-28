@@ -21,5 +21,5 @@ public class ShoppingCart {
 	@Column(name = "shoppingCart_id")
 	private int id;
 	private int totalItem;
-	private int totalPrice;
+	private double totalPrice;
 }

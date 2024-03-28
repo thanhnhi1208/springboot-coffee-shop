@@ -33,7 +33,7 @@ public class Product {
 	private String image;
 	private double sale_price;
 	
-	private int quantity;
+	private boolean expired;
 	
 	@ManyToOne
 	@JoinColumn(name = "caterogy_id", referencedColumnName = "category_id")

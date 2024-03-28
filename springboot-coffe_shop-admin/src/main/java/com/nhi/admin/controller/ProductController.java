@@ -57,4 +57,10 @@ public class ProductController {
 		this.productService.deleteProduct(id);
 		return "redirect:/product";
 	}
+	
+	@GetMapping("/product/expired")
+	public String expried(int id) {
+		this.productService.expired(id);
+		return "redirect:/product";
+	}
 }

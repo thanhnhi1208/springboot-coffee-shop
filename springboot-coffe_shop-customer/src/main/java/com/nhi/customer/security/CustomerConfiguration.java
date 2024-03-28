@@ -31,8 +31,9 @@ public class CustomerConfiguration {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		http
 		.authorizeHttpRequests(request -> request	// login , register ,forgot-password khỏi cần ghi vì tự động vô được
-			.requestMatchers("/resources/**", "/css/**", "/img/**", "/vendor/**", "/js/**", "/scss/**").permitAll()
+			.requestMatchers("/resources/**", "/css/**", "/img/**", "/vendor/**", "/js/**", "/scss/**", "/CSS_COFFEE/**", "/Hinh_Coffee/**").permitAll()
 			.requestMatchers("/login").permitAll()
+			.requestMatchers("/index", "/menu", "/detailCoffee").permitAll()
 			.anyRequest().authenticated()
 		)
 		.formLogin(form -> form

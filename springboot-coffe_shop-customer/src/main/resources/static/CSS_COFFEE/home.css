@@ -8,12 +8,18 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.home-header{
+	background-color: transparent !important;
+}	
+
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding: 20px;
+  background-color: #404040;
+
 }
 
 header .navbar {

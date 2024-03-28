@@ -42,9 +42,9 @@
                                             <th>Hình Ảnh</th>
                                             <th>Tên Sản Phẩm</th>
                                             <th>Thể Loại</th>
-                                            <th>Số Lượng</th>
                                             <th>Giá</th>
                                             <th>Sale</th>
+                                            <th>Tình Trạng</th>
                                             <th>Thao Tác</th>
                                             
                                         </tr>
@@ -54,9 +54,9 @@
                                             <th>Hình Ảnh</th>
                                             <th>Tên Sản Phẩm</th>
                                             <th>Thể Loại</th>
-                                            <th>Số Lượng</th>
                                             <th>Giá</th>
                                             <th>Sale</th>
+                                            <th>Tình Trạng</th>
                                             <th>Thao Tác</th>
                                         </tr>
                                     </tfoot>
@@ -67,12 +67,15 @@
 											</td>
 											<td th:text="${product.name}"></td>
 											<td th:text="${product.category.name}"></td>
-											<td th:text="${product.quantity}"></td>
-											<td th:text="${product.price}"></td>
+											<td th:text="${product.price} + ' VNĐ'"></td>
 											<td th:text="${product.sale_price}"></td>
+											<td th:text="${product.expired == false ? 'Còn Hàng' : 'Hết Món'}"></td>
 											<td>
 												<a th:href="@{/product/delete(id = ${product.id})}" > Xoá</a>,
 												<a class="editButton" th:href="@{/product/findById(id = ${product.id})}" data-toggle="modal" data-target="#editModal" data-whatever="@mdo">Chỉnh Sửa</a>
+												, <a th:if="${product.expired == false }" th:href="@{/product/expired(id = ${product.id})}" > Xác Nhận Hết Món</a>
+												<a th:if="${product.expired == true }" th:href="@{/product/expired(id = ${product.id})}" > Xác Nhận Còn Hàng</a>
+											
 											</td>
 										</tr>
 									</tbody>
@@ -131,11 +134,7 @@
 								<option th:each="category:${categoryList}" th:text="${category.name}" th:value="${category.id}"></option>
 							</select>
 				          </div>
-				          
-				          <div class="form-group">
-				            <label for="recipient-name" class="col-form-label">Số Lượng:</label>
-				            <input name="quantity" type="text" class="form-control" id="recipient-name">
-				          </div>
+				       
 				          
 				          <div class="form-group">
 				            <label for="recipient-name" class="col-form-label">Giá:</label>
@@ -204,21 +203,19 @@
 							</select>
 				          </div>
 				          
-				          <div class="form-group">
-				            <label for="recipient-name" class="col-form-label">Số Lượng:</label>
-				            <input name="quantity" type="text" class="form-control" id="editQuantity">
-				          </div>
 				          
 				          <div class="form-group">
 				            <label for="recipient-name" class="col-form-label">Giá:</label>
 				            <input name="price" type="text" class="form-control" id="editPrice">
 				          </div>
-					 </td>
-					 <td>
-						 <div class="form-group">
+				          
+				           <div class="form-group">
 				            <label for="recipient-name" class="col-form-label">Sale:</label>
 				            <input name="sale_price" type="text" class="form-control" id="editSale" value="0">
 				          </div>
+					 </td>
+					 <td>
+						
 				          
 				          <div class="form-group">
 				            <label for="recipient-name" class="col-form-label">Mô Tả:</label>
@@ -230,6 +227,8 @@
 				            <input id="image-file-edit" name="imageOfProduct" type="file" class="form-control">
 				            <img id="image-edit" style="width: 100px; " src="" alt="your image" />
 				          </div>
+				          
+				         
 					 </td>
 				 </tr>
 			 </table>

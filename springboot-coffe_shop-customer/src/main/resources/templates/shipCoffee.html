@@ -8,18 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" th:href="@{/CSS_COFFEE/menu.css}">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-          <a class="logo" href="homeCoffee.html">Coffee<span>.</span></a>
-          <ul class="menu-links"> 
-            <li><a href="homeCoffee.html">Home</a></li>
-            <li><a href="menuCoffee.html">Thực Đơn</a></li>
-            <li><a href="UScoffee.html">Về Chúng Tôi</a></li>
-            <li><a href="feedback.html">Feed Back</a></li>
-          </ul>
-        </nav>
+   <header th:replace="~{_fragmentCoffee::head}">
       </header>
 
       <div class="container">
@@ -32,7 +24,7 @@
                 <th>Giá</th>
                 <th>Số Lượng</th>
                 <th>Trạng Thái</th>
-                <th></th>
+                <th>Thanh Toán</th>
               </tr>
             </thead>
             <tbody>
@@ -43,7 +35,7 @@
                 <td>49.000 đ</td>
                 <td>1</td>
                 <td>Đang Chuẩn Bị Món</td>
-                <td><button class="huy">Huỷ Đơn Hàng</button></td>
+                <td>Chuyển Khoản</td>
               </tr>
             </tbody>
         </table>
@@ -87,5 +79,7 @@
             </div>
         </div>
     </div>
+    
+    <script th:src="@{js/momo.js}"></script>
 </body>
 </html>
