@@ -39,7 +39,6 @@ public class MoMoController {
 		ipnUrl= "http://localhost:8081/customer/order/shoppingCart?fullName="+fullName+"&phoneNumber="+phoneNumber+"&address="+address;
 		redirectUrl = "http://localhost:8081/customer/shoppingCart?fullName="+fullName+"&phoneNumber="+phoneNumber+"&address="+address;
 		
-		System.out.println(redirectUrl);
 		Map<String, String> postData = new HashMap<>();
 		postData.put("partnerCode", partnerCode);
 		postData.put("accessKey", accessKey);

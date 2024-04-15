@@ -13,7 +13,7 @@
          
           <li><a th:href="@{/index}">Trang Chủ</a></li>
           <li><a th:href="@{/menu}">Thực Đơn</a></li>
-           <li><a href="feedback.html">Yêu Thích Của Tôi</a></li>
+           <li sec:authorize="isAuthenticated()"><a  th:href="@{/favorite}">Yêu Thích Của Tôi</a></li>
           <li>
 			  <a sec:authorize="isAuthenticated()" th:href="@{/shoppingCart}">
 			  	  <div class="div-totalItem">

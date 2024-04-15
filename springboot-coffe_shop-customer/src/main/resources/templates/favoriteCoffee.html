@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Product</title>
+    <link rel="stylesheet" href="CSS_COFFEE/favouriteCoffee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <link rel="stylesheet" th:href="@{/CSS_COFFEE/menu.css}">
+</head>
+<body>
+    <header th:fragment="head">
+      <nav class="navbar">
+        <a class="logo" th:href="@{/index}">Coffee<span>.</span></a>
+        <ul class="menu-links">
+         
+          <li><a th:href="@{/index}">Trang Chủ</a></li>
+          <li><a th:href="@{/menu}">Thực Đơn</a></li>
+           <li sec:authorize="isAuthenticated()"><a  th:href="@{/favorite}">Yêu Thích Của Tôi</a></li>
+          <li>
+			  <a sec:authorize="isAuthenticated()" th:href="@{/shoppingCart}">
+			  	  <div class="div-totalItem">
+					  <i class="fa-solid fa-cart-plus" style="color: #ff0000;"></i>
+					  <span id="totalItem" th:text="${shoppingCart.totalItem}"></span>
+				  </div>
+		  	  </a>
+		  </li>
+		  <li>
+			  <div class="dropdown" sec:authorize="isAuthenticated()" >
+			  	  <img sec:authorize="isAuthenticated() == false" th:src="@{/img/avt-macdinh.jpg}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
+			  	  <img sec:authorize="isAuthenticated()" th:src="'data:image/jpeg;base64,' + ${customer.image}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
+				  <div class="dropdown-content">
+					<a th:href="@{/shipCoffee}" >Đơn Hàng</a>
+				    <a th:href="@{/profile}" >Tài Khoản</a>
+				    <a th:href="@{/logout}">Đăng Xuất</a>
+				    				    
+				  </div>
+		  	  </div>
+		  </li>
+
+        </ul>
+        
+      </nav>
+      
+    </header>
+
+      <div class="container">
+        <table id="table-favorite">
+            <thead>
+              <tr>
+                <th>Hình Ảnh</th>
+                <th>Tên Món</th>
+                
+                <th>Thao Tác</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="favorite:${favoriteList}">
+                <td>
+                    <a th:href="@{/detailCoffee(id = ${favorite.product.id})}">
+                        <img class="traNhietDoi" th:src="'data:image/jpeg;base64,' + ${favorite.product.image}">
+                    </a>
+                </td>  
+                              
+                <td th:text="${favorite.product.name}">Trà Thanh Đào Nhiệt Đới</td>
+            
+                <td>
+                    <a th:href="@{/detailCoffee(id = ${favorite.product.id})}" style=" text-decoration: none;">
+                        <button style="cursor: pointer;" class="click-button1" >Đặt hàng</button>
+                     </a>
+                     <a style="text-decoration: none;" >
+                      	<button style="cursor: pointer;" class="click-button2 delete">Xoá</button>
+                      </a>
+                </td>
+                
+              </tr>
+            </tbody>
+            
+        </table>
+
+       
+      </div>
+
+      <div class="contact" id="contact">
+        <div class="contact-box">
+            <div class="contact-image">
+                <img src="Hinh_Coffee/khong_gian_coffee.jpg">
+            </div>
+        </div>
+        <div class="contact-box">
+            <div class="contact-body">
+                <form>
+                    <h2>Chi Nhánh Của Chúng Tôi</h2>
+                    <div class="form-content">
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>130 Đồng Khởi Phường 11 Q.1 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>489 Âu Cơ Phường 11 Q.Tân Phú TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>49 Hồng Bàng Phường 2 Q.10 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>78 CMT8 Phường 7 Q.3 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i> 391 Nguyễn Thị Thập P.Tân Thuận Tây Q.7 TP.HCM</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="footer-box">
+            <div class="social-media">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+           
+            <div class="brand">
+                <h2>COFFEE!</h2>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script th:src="@{/js/favorite-delete.js}"></script>
+</html>

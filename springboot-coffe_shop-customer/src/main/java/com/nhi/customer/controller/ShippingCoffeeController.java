@@ -6,19 +6,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.nhi.libary.model.CartItem;
 import com.nhi.libary.repository.CustomerRepository;
+import com.nhi.libary.service.OrderService;
 
 @Controller
 public class ShippingCoffeeController {
 	
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private OrderService orderService;
+	
 
 
 	@GetMapping("/shipCoffee")
 	public String shippingCoffee(Model model, Authentication authentication) {
 		model.addAttribute("shoppingCart", customerRepository.findByEmail(authentication.getName()).getShoppingCart());
 		model.addAttribute("customer", customerRepository.findByEmail(authentication.getName()));
+		model.addAttribute("orderList", orderService.findByCustomer(authentication.getName()));
+		model.addAttribute("cartItemList", orderService.findCartItemByOrder(authentication.getName()));
+		
 		return "shipCoffee";
 	}
 }

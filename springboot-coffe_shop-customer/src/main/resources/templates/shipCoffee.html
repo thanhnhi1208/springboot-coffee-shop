@@ -15,9 +15,10 @@
       </header>
 
       <div class="container">
-        <table>
+        <table id="table-ship">
             <thead>
               <tr>
+				<th>Mã Hàng</th>
                 <th>Hình Ảnh</th>
                 <th>Tên Món</th>
                 <th>Size</th>
@@ -25,18 +26,36 @@
                 <th>Số Lượng</th>
                 <th>Trạng Thái</th>
                 <th>Thanh Toán</th>
+                <th>Chi Tiết</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><img class="traNhietDoi" src="Hinh_Coffee/traNhietDoi.webp"></td>
-                <td>Trà Thanh Đào Nhiệt Đới</td>
-                <td>S</td>
-                <td>49.000 đ</td>
-                <td>1</td>
-                <td>Đang Chuẩn Bị Món</td>
-                <td>Chuyển Khoản</td>
-              </tr>
+              <th:block th:each="order, iterStatIndex:${orderList}">
+				<tr th:each="cartItem, status :${cartItemList}" th:if="${cartItem.order.id == order.id}">
+					<td th:text="${cartItem.order.id}" style="font-weight: bold; color: rgb(247, 136, 0);"></td>
+	                <td>
+						<img class="traNhietDoi" th:src="'data:image/jpeg;base64,' + ${cartItem.product.image}">
+	                </td>
+	                <td th:text="${cartItem.product.name}"></td>
+	                <td th:text="${cartItem.size}"></td>
+	                <td th:text="${#numbers.formatDecimal(cartItem.costPrice, 0, 'POINT', 0, 'POINT')} + 'VNĐ'"></td>
+	                <td th:text="${cartItem.quantity}"></td>
+	                <td>Đang Chuẩn Bị Món</td>
+	                <td th:text="${order.paymentMethod}">Chuyển Khoản</td>
+	                <td id="detailInfo" th:if="${cartItem.order.id == order.id}">
+						<div class="dropdown" sec:authorize="isAuthenticated()" >
+					  	  <span style="color: red;">Chi tiết</span>
+						  <div class="dropdown-content">
+								<a th:text="'Tổng tiền: ' + ${#numbers.formatDecimal(order.totalPrice, 0, 'POINT', 0, 'POINT')} + 'VNĐ'" ></a>
+							    <a th:text="'Địa chỉ giao: ' + ${order.address}" ></a>
+							    <a th:text="'Tên người nhận: ' + ${order.fullName}"></a>
+							   	<a th:text="'SĐT người nhận: ' + ${order.phoneNumber}"></a>
+						  </div>
+		  	  			</div>
+					</td>
+				</tr>
+              </th:block >
+             
             </tbody>
         </table>
 
@@ -81,5 +100,6 @@
     </div>
     
     <script th:src="@{js/momo.js}"></script>
+    <script th:src="@{js/shipCoffee.js}"></script>
 </body>
 </html>

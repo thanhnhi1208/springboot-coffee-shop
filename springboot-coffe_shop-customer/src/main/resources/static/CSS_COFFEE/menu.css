@@ -221,12 +221,7 @@ header {
     color: orange;
 }
 
-.shop-box .card-body i {
-    color: yellow;
-    font-size: 10px;
-    position: relative;
-    bottom: 5px;
-}
+
 
 .shop-box .card-body .cash {
     font-size: 22px;
@@ -618,3 +613,19 @@ form .form-content input:valid~span::before {
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+
+
+.fa-heart{
+	  color: darkgray ;
+	  font-size: 25px ;
+	  transform: scale 0.15s;
+	  cursor: pointer;
+  }
+  
+  .fa-heart:hover{
+	  scale: 1.1 ;
+  }
+  
+  .fa-heart:active{
+	  scale: 1.0;
+  }

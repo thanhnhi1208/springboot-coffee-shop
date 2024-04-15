@@ -69,11 +69,7 @@
 							</a>
 	                    </div>
 	                    <div class="card-body">
-	                        <i class="fa-solid fa-star"></i>
-	                        <i class="fa-solid fa-star"></i>
-	                        <i class="fa-solid fa-star"></i>
-	                        <i class="fa-solid fa-star"></i>
-	                        <i class="fa-solid fa-star-half"></i>
+	                        <i class="fa-solid fa-heart" ></i>
 	                        <label th:if="${productItem.sale_price != 0}" style="text-decoration: line-through; font-size: 20px; color: red;" class="cash" th:text="${#numbers.formatDecimal(productItem.price, 0, 'POINT', 0, 'POINT')} + 'VNĐ'"></label>
 	                        <label th:if="${productItem.sale_price != 0}" class="cash" th:text="${#numbers.formatDecimal(productItem.sale_price, 0, 'POINT', 0, 'POINT')} + 'VNĐ'" style="font-size: 21px;"></label>
 	                        <label th:if="${productItem.sale_price == 0}"  class="cash" th:text="${#numbers.formatDecimal(productItem.price, 0, 'POINT', 0, 'POINT')} + 'VNĐ'"></label>
@@ -127,5 +123,7 @@
     </div>
 
 </body>
+
+	<script th:src="@{/js/favorite.js}"></script>
 
 </html>

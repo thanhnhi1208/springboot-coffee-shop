@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    z-index: 200;
+    background-color: #545454;
+    
+  }
+  
+  header .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .navbar .logo {
+    color: #fff;
+    font-weight: 600;
+    font-size: 2.1rem;
+    text-decoration: none;
+  }
+  
+  .navbar .logo span {
+    color: #C06B3E;
+  }
+  
+  .navbar .menu-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.2s ease;
+  }
+  
+  .navbar a:hover {
+    color: #C06B3E;
+  }
+
+  .container{
+    margin: 190px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    border: none solid white;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: lightgray;
+  }
+
+  .traNhietDoi {
+    max-width: 50px;
+    max-height: 50px;
+  }
+
+
+.nameProduct{
+  width: 300px;
+}
+
+
+.contact-body form button {
+    padding: 10px 20px;
+    font-size: 17px;
+    border: none;
+    background-color: #ff6600;
+    color: white;
+    border: 5px;
+    cursor: pointer;
+    transition: all .4s ease-in;
+  }
+  .click-button1{
+    color: rgb(0, 208, 0);
+  }
+  .click-button2{
+    color: red;
+  }
+
+  .click-button1,.click-button2{
+    border: none;
+    background-color: white;
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  .contact-body form button:hover {
+    background-color: #ff6681;
+  }
+
+  /* Footer */
+
+
+.footer {
+    background-color: #404040;
+    border-top: 2px solid #333333;
+  }
+  
+  .footer .footer-box {
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .footer .footer-box .social-media a {
+    color: white;
+    background-color: #333333;
+    border-radius: 50%;
+    font-size: 17px;
+    padding: 10px;
+    margin: 5px;
+  }
+  
+  .footer .footer-box .social-media a:hover {
+    opacity: .7;
+    transition: .5s all ease-in-out;
+  }
+  
+  .footer .footer-box .copyright {
+    color: white;
+    font-size: 20px;
+  }
+  
+  .footer .footer-box .brand {
+    color: white;
+    font-size: 20px;
+  }
+  
+  .footer .footer-box .brand h2 {
+    color: orange;
+  }
+  
+  /* Contact */
+  
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border-top: 2px solid #333333;
+  }
+  
+  .contact .contact-box {
+    flex: 1;
+  }
+  
+  .contact .contact-box .contact-image,
+  .contact .contact-box .contact-body {
+    height: 100%;
+  }
+  
+  .contact img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .contact-image img {
+    opacity: .9;
+  }
+  
+  .contact-body {
+    background-color: #404040;
+    height: 100%;
+    border-left: 2px solid #333333;
+  }
+  
+  .form-content{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .form-content div { 
+    margin-bottom: 40px; 
+  }
+  
+  .form-content div i {
+    margin-right: 20px; 
+  }
+  
+  .contact-body form {
+    padding: 50px 40px;
+    box-sizing: border-box;
+  }
+  
+  .contact-body h2 {
+    color: orange;
+  }
+  
+  form .form-content {
+    position: relative;
+    margin: 30px 0;
+    border-bottom: 2px solid lightgray;
+  }
+  
+  form .form-content input {
+    width: 100%;
+    height: 40px;
+    padding: 0 5px;
+    font-size: 17px;
+    border: none;
+    background: none;
+    outline: none;
+    color: white;
+  }
+  
+  form .form-content label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: gray;
+    transform: translateY(-50%);
+    font-size: 17px;
+    transition: .5s;
+    pointer-events: none;
+  }
+  
+  form .form-content span::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: orange;
+    transform: .4s;
+  }
+  
+  form .form-content input:focus~label,
+  form .form-content input:valid~label {
+    top: -5px;
+    color: orange;
+  }
+  
+  form .form-content input:focus~span::before,
+  form .form-content input:valid~span::before {
+    width: 100%;
+  }
+  
+  .contact-body form button {
+    padding: 10px 20px;
+    font-size: 17px;
+    border: none;
+    background-color: #ff6600;
+    color: white;
+    border: 5px;
+    cursor: pointer;
+    transition: all .4s ease-in;
+  }
+  
+  .contact-body form button:hover {
+    background-color: #ff6681;
+  }
+  
+  
+  

@@ -1,8 +1,8 @@
 package com.nhi.libary.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +54,7 @@ public class OrderService {
 		
 		for (CartItem cartItem : cartItems) {
 			cartItem.setShoppingCart(null);
+			cartItem.setOrder(order);
 			this.cartItemRepository.save(cartItem);
 		}
 		
@@ -63,5 +64,27 @@ public class OrderService {
 		this.customerRepository.save(customer);
 		
 		return "Thành công";
+	}
+	
+	public List<Order> findByCustomer(String email){
+		Customer customer = this.customerRepository.findByEmail(email);
+		return this.orderRepository.findByCustomer(customer);
+	}
+	
+	public List<CartItem> findCartItemByOrder(String email){
+		List<Order> orderList = this.findByCustomer(email);
+		
+		List<CartItem> cartItemList = new ArrayList<>();
+		for (Order order : orderList) {
+			List<CartItem> cartItems = cartItemRepository.findCartItemByOrder(order.getId());
+			if(cartItems != null && cartItems.isEmpty() == false) {
+				for (CartItem cartItem : cartItems) {
+					cartItemList.add(cartItem);
+				}
+			}
+		}
+		
+		
+		return cartItemList;
 	}
 }
