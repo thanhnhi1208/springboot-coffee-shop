@@ -28,6 +28,7 @@
 			  	  <img sec:authorize="isAuthenticated()" th:src="'data:image/jpeg;base64,' + ${customer.image}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
 				  <div class="dropdown-content">
 					<a th:href="@{/shipCoffee}" sec:authorize="isAuthenticated()">Đơn Hàng</a>
+					<a th:href="@{/shipped}" sec:authorize="isAuthenticated()">Đơn đã giao</a>
 				    <a th:href="@{/profile}" sec:authorize="isAuthenticated()">Tài Khoản</a>
 				    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Đăng Xuất</a>
 				    <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Đăng nhập</a>				    

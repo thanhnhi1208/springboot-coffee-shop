@@ -67,11 +67,20 @@ public class OrderService {
 
 	public List<Order> findByCustomer(String email) {
 		Customer customer = this.customerRepository.findByEmail(email);
-		return this.orderRepository.findByCustomer(customer);
+		List<Order> newOrderList = new ArrayList<>();
+		
+		List<Order> orderList = this.orderRepository.findByCustomer(customer.getId());
+		for (Order order : orderList) {
+			if(order.getDeliveryDate().isEqual(LocalDate.now())) {
+				newOrderList.add(order);
+			}
+		}
+		return newOrderList;
 	}
 
 	public List<CartItem> findCartItemByOrder(String email) {
-		List<Order> orderList = this.findByCustomer(email);
+		Customer customer = this.customerRepository.findByEmail(email);
+		List<Order> orderList = this.orderRepository.findByCustomer(customer.getId());
 
 		List<CartItem> cartItemList = new ArrayList<>();
 		for (Order order : orderList) {
@@ -94,5 +103,40 @@ public class OrderService {
 //			}
 //		}
 		return this.cartItemRepository.findRevenue();
+	}
+	
+	public List<CartItem> findAllCartItemByOrder(){
+		List<Order> orderList=  this.orderRepository.findAllOrderByDate();
+		List<CartItem> cartItemList = new ArrayList<>();
+		for (Order order : orderList) {
+			for (CartItem cartItem : this.cartItemRepository.findByOrder(order)) {
+				cartItemList.add(cartItem);
+			}
+		}
+		
+		return cartItemList;
+	}
+	
+	public List<Order> findOrderSortDate(){
+		return this.orderRepository.findAllOrderByDate();
+	}
+
+	public List<CartItem> findById(int id) {
+		Order order = this.orderRepository.findById(id).get();
+		
+		return this.cartItemRepository.findByOrder(order);
+	}
+
+	public List<Order> shipped(String email) {
+		Customer customer = this.customerRepository.findByEmail(email);
+		List<Order> newOrderList = new ArrayList<>();
+		
+		List<Order> orderList = this.orderRepository.findByCustomer(customer.getId());
+		for (Order order : orderList) {
+			if(order.getDeliveryDate().isEqual(LocalDate.now()) == false) {
+				newOrderList.add(order);
+			}
+		}
+		return newOrderList;
 	}
 }

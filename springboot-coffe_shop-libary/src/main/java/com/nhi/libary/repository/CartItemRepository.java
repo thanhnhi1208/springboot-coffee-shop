@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.nhi.libary.model.CartItem;
+import com.nhi.libary.model.Order;
 import com.nhi.libary.model.Product;
 import com.nhi.libary.model.ShoppingCart;
 
@@ -35,5 +36,7 @@ public interface CartItemRepository extends JpaRepository<CartItem, Integer>{
 			+ "GROUP BY EXTRACT(MONTH FROM o.order_date) "
 			+ "ORDER BY EXTRACT(MONTH FROM o.order_date)", nativeQuery = true)
 	List<Object> findRevenue();
+	
+	List<CartItem> findByOrder(Order order);
 
 }

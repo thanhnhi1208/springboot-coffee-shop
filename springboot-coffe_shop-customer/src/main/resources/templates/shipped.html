@@ -40,7 +40,7 @@
 	                <td th:text="${cartItem.size}"></td>
 	                <td th:text="${#numbers.formatDecimal(cartItem.costPrice, 0, 'POINT', 0, 'POINT')} + 'VNĐ'"></td>
 	                <td th:text="${cartItem.quantity}"></td>
-	                <td>Đang Chuẩn Bị Món</td>
+	                <td>Thành Công</td>
 	                <td th:text="${order.paymentMethod}">Chuyển Khoản</td>
 	                <td id="detailInfo" th:if="${cartItem.order.id == order.id}">
 						<div class="dropdown" sec:authorize="isAuthenticated()" >
@@ -99,6 +99,7 @@
         </div>
     </div>
     
+    <script th:src="@{js/momo.js}"></script>
     <script th:src="@{js/shipCoffee.js}"></script>
 </body>
 </html>
