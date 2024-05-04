@@ -48,7 +48,8 @@
 		            
 		
 		                <div class="order">
-		                    <button type="submit" class="order">Đặt Hàng</button>
+		                    <button th:if="${product.expired == false}" type="submit" class="order">Đặt Hàng</button>
+		                    <p th:if="${product.expired == true}" type="submit" class="order">Hết hàng</p>
 		                </div>
 		        </div>
 	      </div>
@@ -59,57 +60,71 @@
             Đánh Giá Sản Phẩm
         </div>
         
-        <div class="customer-ratings">
-            <div class="customer-avt">
-                <img class="avt" src="img/thanhnhi.jpg">
+        <form th:action="@{/detailCoffee/feedback/add}" enctype="multipart/form-data" method="post" sec:authorize="isAuthenticated()">
+			<input th:if="${customer != null}" type="hidden" name="customer" th:value="${customer.id}">
+			<input th:if="${product != null}" type="hidden" name="product" th:value="${product.id}">
+	        <div class="input-container" sec:authorize="isAuthenticated()">
+				
+					<div style="margin-right: 15px">
+						<img class="avt" th:src="'data:image/jpeg;base64,' + ${customer.image}" >
+					</div>
+					
+					<div>
+						<input name="comment" class="input-feedback" type="text" placeholder="Đánh Giá Của Bạn...">
+					</div>
+					
+					
+					
+					<div>
+						<button type="submit" class="send-button" style="padding: 5px 10px 5px 10px; margin-left: 15px">Gửi</button>
+		                
+					</div>
+			
+			
+			</div>
+			<div class="input-container">
+					<div>
+						<input name="hinhAnh1" class="input-feedback" type="file" id="image-file-1">
+						<img  src="#" style="width: 100px;height: 100px;" id="image-1">
+					</div>
+					
+					<div>
+						<input name="hinhAnh2" class="input-feedback" type="file"  id="image-file-2">
+						<img src="#" style="width: 100px;height: 100px;"  id="image-2">
+					</div>
+				</div>
+			</div>
+        </form>
+        <div class="customer-ratings" th:each="feedback:${feedbackList}">
+            <div class="customer-avt" th:if="${feedback.customer.image != null}">
+                <img class="avt" th:src="'data:image/jpeg;base64,' + ${feedback.customer.image}">
             </div>
 
             <div class="customer-feedback">
-                <div class="customer-name">
+                <div class="customer-name" th:text="${feedback.customer.fullName}">
                     @thanhnhi.1208
                 </div>
                 
-                <div class="time-feedback">
+                <div class="time-feedback" th:text="${feedback.feedBack_date}">
                     20:13 25-02-2023
                 </div>
 
-                <div class="feedback">
+                <div class="feedback" th:text="${feedback.comment}">
                     Mỗi nhân viên đều tỏ ra chuyên nghiệp và am hiểu về các loại cà phê, 
                     giúp khách hàng lựa chọn được thức uống phù hợp với khẩu vị của họ.
                 </div>
 
                 <div class="image-container">
-                    <img class="feedback-img" src="Hinh_Coffee/feedback-img3.jpg">
-                    <img class="feedback-img" src="Hinh_Coffee/feedback-img4.jpg">
-                    <img class="feedback-img" src="Hinh_Coffee/feedback-img5.jpg">
+					<th:block th:each="image, status : ${feedback.imageTemp}">
+					    <img class="feedback-img" th:src="'data:image/jpeg;base64,' + ${image}" />
+					    
+					</th:block>
+
                 </div>
             </div>
         </div>
 
-        <div class="customer-ratings">
-            <div class="customer-avt">
-                <img class="avt" src="img/hokhanh.jpg">
-            </div>
-
-            <div class="customer-feedback">
-                <div class="customer-name">
-                    @hokhanh.2007
-                </div>
-                
-                <div class="time-feedback">
-                    06:13 01-02-2024
-                </div>
-
-                <div class="feedback">
-                    Wifi mạnh và ổn định, làm cho quán trở thành nơi lý tưởng để làm việc hoặc họp nhóm.
-                </div>
-
-                <div class="image-container">
-                    <img class="feedback-img" src="Hinh_Coffee/feedback-img1.jpg">
-                    <img class="feedback-img" src="Hinh_Coffee/feedback-img2.jpg">
-                </div>
-            </div>
-        </div>
+     
 
       </div>
 	
@@ -152,5 +167,6 @@
     </div>
 
     <script src="js/detailCoffe.js"></script>
+    <script src="js/feedback.js"></script>
 </body>
 </html>

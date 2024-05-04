@@ -17,29 +17,28 @@ import com.nhi.libary.repository.OrderRepository;
 public class OrderService {
 	@Autowired
 	private OrderRepository orderRepository;
-	
-	@Autowired 
+
+	@Autowired
 	private CustomerRepository customerRepository;
-	
+
 	@Autowired
 	private CartItemRepository cartItemRepository;
-	
 
 	public String addOrder(String email, String paymentMethod, String fullName, String phoneNumber, String address) {
-		
+
 		Customer customer = this.customerRepository.findByEmail(email);
-		
+
 		List<CartItem> cartItems = cartItemRepository.findByShoppingCart(customer.getShoppingCart().getId());
 
-		if(cartItems == null || cartItems.isEmpty()) {
+		if (cartItems == null || cartItems.isEmpty()) {
 			return null;
 		}
-		
+
 		int quantity = 0;
 		for (CartItem cartItem : cartItems) {
 			quantity += cartItem.getQuantity();
 		}
-		
+
 		Order order = new Order();
 		order.setDeliveryDate(LocalDate.now());
 		order.setOrderDate(LocalDate.now());
@@ -51,40 +50,49 @@ public class OrderService {
 		order.setAddress(address);
 		order.setCustomer(customer);
 		this.orderRepository.save(order);
-		
+
 		for (CartItem cartItem : cartItems) {
 			cartItem.setShoppingCart(null);
 			cartItem.setOrder(order);
 			this.cartItemRepository.save(cartItem);
 		}
-		
+
 		customer.getShoppingCart().setTotalItem(0);
 		customer.getShoppingCart().setTotalPrice(0);
-		
+
 		this.customerRepository.save(customer);
-		
+
 		return "Thành công";
 	}
-	
-	public List<Order> findByCustomer(String email){
+
+	public List<Order> findByCustomer(String email) {
 		Customer customer = this.customerRepository.findByEmail(email);
 		return this.orderRepository.findByCustomer(customer);
 	}
-	
-	public List<CartItem> findCartItemByOrder(String email){
+
+	public List<CartItem> findCartItemByOrder(String email) {
 		List<Order> orderList = this.findByCustomer(email);
-		
+
 		List<CartItem> cartItemList = new ArrayList<>();
 		for (Order order : orderList) {
 			List<CartItem> cartItems = cartItemRepository.findCartItemByOrder(order.getId());
-			if(cartItems != null && cartItems.isEmpty() == false) {
+			if (cartItems != null && cartItems.isEmpty() == false) {
 				for (CartItem cartItem : cartItems) {
 					cartItemList.add(cartItem);
 				}
 			}
 		}
-		
-		
+
 		return cartItemList;
+	}
+
+	public List<Object> findRevenue() {
+//		for (Object obj : this.cartItemRepository.findRevenue()) {
+//			Object[] row = (Object[]) obj;
+//			for (int i = 0; i < row.length; i++) {
+//				System.out.println(row[i]);
+//			}
+//		}
+		return this.cartItemRepository.findRevenue();
 	}
 }

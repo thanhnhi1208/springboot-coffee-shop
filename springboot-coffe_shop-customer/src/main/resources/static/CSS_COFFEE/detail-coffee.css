@@ -130,7 +130,7 @@ a {
   text-decoration: none; 
 }
 
-.order button {
+.order button  {
     width: 550px; 
     height: 100%; 
     padding: 10px; 
@@ -139,6 +139,19 @@ a {
     border: none; 
     border-radius: 5px;
     background-color: rgb(229, 121, 5); 
+    color: white; 
+    cursor: pointer; 
+}
+
+.order p{
+	width: 550px; 
+    height: 100%; 
+    padding: 10px; 
+    font-size: 16px; 
+    margin: 50px -20px;
+    border: none; 
+    border-radius: 5px;
+    background-color: rgb(192, 192, 192);
     color: white; 
     cursor: pointer; 
 }

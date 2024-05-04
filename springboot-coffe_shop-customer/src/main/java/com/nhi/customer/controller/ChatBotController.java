@@ -3,8 +3,10 @@ package com.nhi.customer.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -84,7 +86,7 @@ public class ChatBotController {
 	/*
 	 * Define answers for each given category.
 	 */
-	public void getQueststion() {
+	public void getQueststion(String speech) {
 		questionAnswer = new HashMap<>();
 		questionAnswer.put("greeting", "Tôi có thể giúp gì cho bạn?");
 		questionAnswer.put("conversation-continue", "Tôi có thể giúp gì khác cho bạn?");
@@ -92,7 +94,7 @@ public class ChatBotController {
 		
 		List<Product> allProductRecommend = findAllCartItemTopSeller();
 		String allNameRecommend = "";
-		allNameRecommend += "Xin mời bạn tham khảo <br>" ;
+		allNameRecommend += "Xin mời bạn tham khảo " ;
 		int countRecommend =0;
 		for (Product product : allProductRecommend) {
 			allNameRecommend += product.getName() + " có giá là: " + this.formatVND(product.getPrice());
@@ -101,7 +103,7 @@ public class ChatBotController {
 			}
 			
 			if(countRecommend != allProductRecommend.size()-1) {
-				allNameRecommend += "<br>";
+				allNameRecommend += ".";
 			}
 			
 			countRecommend ++;
@@ -109,7 +111,7 @@ public class ChatBotController {
 		questionAnswer.put("recommend", allNameRecommend);
 		
 		List<Product> findAllHighestPrice = this.productRepository.findAllHighestPrice();
-		String allNameHighestPrice = "<br>Món giá cao nhất là: ";
+		String allNameHighestPrice = "Món giá cao nhất là: ";
 		int countHighestPrice =0;
 		if(findAllHighestPrice != null && findAllHighestPrice.isEmpty()==false) {
 			for (Product product : findAllHighestPrice) {
@@ -126,19 +128,22 @@ public class ChatBotController {
 			}
 		}
 		
+		questionAnswer.put("price-inquiry", allNameHighestPrice);
+		
 		List<Product> findAllLowestPrice = this.productRepository.findAllLowestPrice();
+		String allNameLowestPrice = "";
 		int countLowestPrice =0;
 		if(findAllLowestPrice != null && findAllLowestPrice.isEmpty()==false) {
-			allNameHighestPrice += "<br>Món giá thấp nhất là: ";
+			allNameLowestPrice += " | Món giá thấp nhất là: ";
 			
 			for (Product product : findAllLowestPrice) {
-				allNameHighestPrice += product.getName() + " có giá là: " + this.formatVND(product.getPrice());
+				allNameLowestPrice += product.getName() + " có giá là: " + this.formatVND(product.getPrice());
 				if(product.getSale_price() !=0) {
-					allNameHighestPrice += " đang sale còn: "+this.formatVND(product.getSale_price());
+					allNameLowestPrice += " đang sale còn: "+this.formatVND(product.getSale_price());
 				}
 				
 				if(countLowestPrice != findAllLowestPrice.size()-1) {
-					allNameHighestPrice += ", ";
+					allNameLowestPrice += ", ";
 				}
 				
 				countLowestPrice ++;
@@ -146,21 +151,42 @@ public class ChatBotController {
 		}
 		
 		
-		questionAnswer.put("price-inquiry", allNameHighestPrice);
+		questionAnswer.put("low-price", allNameLowestPrice);
+		
+		List<Product> findAllProductName = this.productRepository.findAllProductName(speech);
+		int countFindAllProductNameString =0;
+		String findAllProductNameString = "";
+		for (Product product : findAllProductName) {
+			findAllProductNameString += product.getName() + " có giá là: " + this.formatVND(product.getPrice());
+			if(product.getSale_price() !=0) {
+				findAllProductNameString += " đang sale còn: "+this.formatVND(product.getSale_price());
+			}
+			
+			if(countFindAllProductNameString != findAllProductName.size()-1) {
+				findAllProductNameString += ", ";
+			}
+			
+			countFindAllProductNameString ++;
+		}
+		
+		questionAnswer.put("drink", findAllProductNameString);
 
 	}
 	
 	@GetMapping("/robot")
 	@ResponseBody
 	public String chatRobot(String speech) throws FileNotFoundException, IOException {
-		this.getQueststion();
+		if(speech != null) {
+			speech = speech.toLowerCase();
+		}
+		this.getQueststion(speech);
 		return robot(speech);
 	}
 
 	public String robot(String speech) throws FileNotFoundException, IOException {
 		// Train categorizer model to the training data we created.
 				DoccatModel model = trainCategorizerModel();
-
+				System.out.println(model.getLanguage());
 				// Take chat inputs from console (user) in a loop.
 	
 					// Get chat input from user.
@@ -197,7 +223,7 @@ public class ChatBotController {
 
 					// Print answer back to user. If conversation is marked as complete, then end
 					// loop & program.
-					return "##### Chat Bot: " + answer;
+					return  answer;
 					
 
 				

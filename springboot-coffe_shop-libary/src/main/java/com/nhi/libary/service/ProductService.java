@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.nhi.libary.model.Category;
 import com.nhi.libary.model.Product;
+import com.nhi.libary.repository.CartItemRepository;
 import com.nhi.libary.repository.ProductRepository;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,6 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private CartItemRepository cartItemRepository;
 
 	public List<Product> findAllProduct() {
 		return productRepository.findAllProductSortId();
@@ -59,6 +63,8 @@ public class ProductService {
 		Product product =  productRepository.findById(id).get();
 		if(product.isExpired() == false) {
 			product.setExpired(true);
+			
+			this.cartItemRepository.deleteAllByProduct(product);
 		}else {
 			product.setExpired(false);
 		}

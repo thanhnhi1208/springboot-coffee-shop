@@ -21,4 +21,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
 	List<Product> findAllLowestPrice();
 	
 	Product findByName(String name);
+	
+	@Query(value = "SELECT * FROM products WHERE LOWER(name) LIKE LOWER(CONCAT('%', ?1, '%'))", nativeQuery = true)
+	List<Product> findAllProductName(String productName);
 }

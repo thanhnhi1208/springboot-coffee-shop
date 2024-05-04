@@ -3,10 +3,14 @@ package com.nhi.libary.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.nhi.libary.model.CartItem;
+import com.nhi.libary.model.Product;
 import com.nhi.libary.model.ShoppingCart;
+
+import jakarta.transaction.Transactional;
 
 public interface CartItemRepository extends JpaRepository<CartItem, Integer>{
 
@@ -21,5 +25,15 @@ public interface CartItemRepository extends JpaRepository<CartItem, Integer>{
 	
 	@Query(value = "SELECT product_id FROM cart_items GROUP BY product_id ORDER BY SUM(quantity) DESC LIMIT 5", nativeQuery = true)
 	List<Integer> findAllCartItemTopSeller();
+	
+	@Transactional
+	@Modifying
+	void deleteAllByProduct(Product product);
+	
+	@Query(value = "SELECT EXTRACT(MONTH FROM o.order_date), SUM(ci.cost_price * ci.quantity) FROM orders o INNER JOIN cart_items ci ON o.order_id = ci.order_id "
+			+ "WHERE  EXTRACT(YEAR FROM o.order_date) = EXTRACT(YEAR FROM CURRENT_DATE) "
+			+ "GROUP BY EXTRACT(MONTH FROM o.order_date) "
+			+ "ORDER BY EXTRACT(MONTH FROM o.order_date)", nativeQuery = true)
+	List<Object> findRevenue();
 
 }

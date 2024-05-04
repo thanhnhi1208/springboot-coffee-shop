@@ -24,10 +24,13 @@ public class MenuController {
 	
 	@GetMapping("/menu")
 	public String menu(Model model, Authentication authentication) {
+		if(authentication != null) {
+			model.addAttribute("shoppingCart", customerRepository.findByEmail(authentication.getName()).getShoppingCart());
+			model.addAttribute("customer", customerRepository.findByEmail(authentication.getName()));
+		}
+		
 		model.addAttribute("productList", productService.findAllProduct()) ;
 		model.addAttribute("categoryList", categoryService.findAllCategory()) ;
-		model.addAttribute("shoppingCart", customerRepository.findByEmail(authentication.getName()).getShoppingCart());
-		model.addAttribute("customer", customerRepository.findByEmail(authentication.getName()));
 		return "menuCoffee";
 	}
 

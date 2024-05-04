@@ -33,7 +33,10 @@ public class CustomerConfiguration {
 		.authorizeHttpRequests(request -> request	// login , register ,forgot-password khỏi cần ghi vì tự động vô được
 			.requestMatchers("/resources/**", "/css/**", "/img/**", "/vendor/**", "/js/**", "/scss/**", "/CSS_COFFEE/**", "/Hinh_Coffee/**").permitAll()
 			.requestMatchers("/login").permitAll()
-			.requestMatchers("/index", "/menu", "/detailCoffee").permitAll()
+			.requestMatchers( "/menu", "/detailCoffee", "/index").permitAll()
+			.requestMatchers("/signup", "/signup/sendOtpToEmail", "/signup/confirmRegister").permitAll()
+			.requestMatchers("/change-pass", "/change-pass/conductChange").permitAll()
+			.requestMatchers("/forgot-password", "/forgot-password/sendOtpToEmail", "/forgot-password/confirmForgetPassword").permitAll()
 			.anyRequest().authenticated()
 		)
 		.formLogin(form -> form

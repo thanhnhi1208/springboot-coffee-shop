@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đổi Mật Khẩu</title>
+    <link rel="stylesheet" href="CSS_COFFEE/singup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+		
+		<div style="text-align: center;">
+			<p th:if="${notification != null}" style="color: red; text-align: center;" th:text="${notification}"></p>
+		</div>
+		
+		<form th:action="@{/change-pass/conductChange}" method="post">
+	        <div class="icon-signup">
+	        <img class="icon-img" th:src="@{/img/icon-coffee.webp}">
+	        <h2>Đổi Mật Khẩu </h2>
+	        </div>
+	
+	     
+	        <label for="Email"><b> Email</b></label>
+	        <input th:value="${email}" type="text" placeholder="Email" name="email" required>
+	
+	
+	        <label for="psw"><b>Mật Khẩu Cũ</b></label>
+	        <input th:value="${oldPassword}"  type="password" placeholder="Mật Khẩu Cũ" name="oldPassword" required>
+	
+	        <label for="psw"><b>Mật Khẩu Mới</b></label>
+	        <input th:value="${newPassword}"  type="password" placeholder="Mật Khẩu Mới" name="newPassword" required>
+	        
+	        <div class="button-signup-div">
+	            <button class="button-signup">Xác Nhận</button>
+	        </div>
+        </form>
+        <div >
+          <a  th:href="@{/login}">Đăng nhập</a>
+        </div>
+    </div>
+</body>
+</html>

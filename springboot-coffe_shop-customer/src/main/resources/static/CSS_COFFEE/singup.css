@@ -1,0 +1,102 @@
+
+body{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh ;
+}
+
+.container{
+    max-width: 400px;
+    max-height: 100%;
+    background: linear-gradient(135deg, #fff8de, rgb(236, 195, 120));
+    margin: 0 auto; /* Căn giữa theo chiều ngang */
+    padding: 20px; /* Thêm padding để tạo khoảng cách với các thành phần bên ngoài */
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-radius: 8px;  
+    width: 400px;
+}
+
+.icon-img{
+    height: 100px;
+    width: 100px;
+}
+.icon-signup{
+    text-align: center;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    display: flex;
+    border: 1px solid rgb(61, 61, 61);
+    border-radius: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  .button-signup {
+    margin-top: 15px;
+    color: rgb(66, 66, 66); /* Màu chữ của nút */
+    padding: 10px 20px; /* Kích thước lề của nút */
+    border: none; /* Loại bỏ đường viền */
+    border-radius: 5px; /* Bo tròn góc của nút */
+    cursor: pointer; /* Con trỏ chuột khi di chuyển qua nút */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */   
+}
+
+.button-signup-div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-signup:hover {
+    background: linear-gradient(135deg, #fff8de, rgb(255, 166, 0));
+}
+
+.fb-gg{
+    display: flex;
+    flex-direction: column;
+}
+
+.fb, .gg{
+    width: 100%;
+    padding: 0 30px;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px; 
+    padding: 0 10px; 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.icon-google{
+    height: 100%;
+    width: 25px;
+}
+
+p{
+    display: inline-block; 
+    vertical-align: middle; 
+    margin-left: 5px;
+}
+
+.google-span {
+    margin-right: 20px;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    background: url("https://accounts.scdn.co/sso/images/new-google-icon.72fd940a229bc94cf9484a3320b3dccb.svg") center center no-repeat;
+}
+
+.facebook-span  {
+    margin-right: 20px;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    background: url("https://accounts.scdn.co/sso/images/new-facebook-icon.eae8e1b6256f7ccf01cf81913254e70b.svg") center center no-repeat;
+  }

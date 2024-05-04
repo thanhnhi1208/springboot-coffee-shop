@@ -14,23 +14,23 @@
           <li><a th:href="@{/index}">Trang Chủ</a></li>
           <li><a th:href="@{/menu}">Thực Đơn</a></li>
            <li sec:authorize="isAuthenticated()"><a  th:href="@{/favorite}">Yêu Thích Của Tôi</a></li>
-          <li>
-			  <a sec:authorize="isAuthenticated()" th:href="@{/shoppingCart}">
+          <li  sec:authorize="isAuthenticated()" th:if="${shoppingCart != null}">
+			  <a th:href="@{/shoppingCart}">
 			  	  <div class="div-totalItem">
 					  <i class="fa-solid fa-cart-plus" style="color: #ff0000;"></i>
 					  <span id="totalItem" th:text="${shoppingCart.totalItem}"></span>
 				  </div>
 		  	  </a>
 		  </li>
-		  <li>
-			  <div class="dropdown" sec:authorize="isAuthenticated()" >
+		  <li >
+			  <div class="dropdown"  >
 			  	  <img sec:authorize="isAuthenticated() == false" th:src="@{/img/avt-macdinh.jpg}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
 			  	  <img sec:authorize="isAuthenticated()" th:src="'data:image/jpeg;base64,' + ${customer.image}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
 				  <div class="dropdown-content">
-					<a th:href="@{/shipCoffee}" >Đơn Hàng</a>
-				    <a th:href="@{/profile}" >Tài Khoản</a>
-				    <a th:href="@{/logout}">Đăng Xuất</a>
-				    				    
+					<a th:href="@{/shipCoffee}" sec:authorize="isAuthenticated()">Đơn Hàng</a>
+				    <a th:href="@{/profile}" sec:authorize="isAuthenticated()">Tài Khoản</a>
+				    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Đăng Xuất</a>
+				    <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Đăng nhập</a>				    
 				  </div>
 		  	  </div>
 		  </li>

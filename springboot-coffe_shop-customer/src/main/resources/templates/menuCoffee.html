@@ -14,7 +14,43 @@
 
 <body>
 
-    <header th:replace="~{_fragmentCoffee::head}"></header>	
+    <header>
+		<nav class="navbar">
+	        <a class="logo" th:href="@{/index}">Coffee<span>.</span></a>
+	        <ul class="menu-links">
+	         	
+	         <li>
+				 <input type="text" class="input-find-menu" placeholder="Tìm kiếm" id="input-find-menu">
+			 </li>
+	          <li><a th:href="@{/index}">Trang Chủ</a></li>
+	          <li><a th:href="@{/menu}">Thực Đơn</a></li>
+	           <li sec:authorize="isAuthenticated()"><a  th:href="@{/favorite}">Yêu Thích Của Tôi</a></li>
+	          <li sec:authorize="isAuthenticated()" th:if="${shoppingCart != null}">
+				  <a   th:href="@{/shoppingCart}">
+				  	  <div class="div-totalItem">
+						  <i class="fa-solid fa-cart-plus" style="color: #ff0000;"></i>
+						  <span id="totalItem" th:text="${shoppingCart.totalItem}"></span>
+					  </div>
+			  	  </a>
+			  </li>
+			  <li>
+				  <div class="dropdown"  >
+				  	  <img sec:authorize="isAuthenticated() == false" th:src="@{/img/avt-macdinh.jpg}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
+				  	  <img sec:authorize="isAuthenticated()" th:src="'data:image/jpeg;base64,' + ${customer.image}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
+					  <div class="dropdown-content">
+						<a th:href="@{/shipCoffee}" sec:authorize="isAuthenticated()">Đơn Hàng</a>
+					    <a th:href="@{/profile}" sec:authorize="isAuthenticated()">Tài Khoản</a>
+					    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Đăng Xuất</a>
+					    <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Đăng nhập</a>		
+					    				    
+					  </div>
+			  	  </div>
+			  </li>
+	
+	        </ul>
+	        
+	      </nav>
+	</header>	
 <!-- Best Seller -->
 
 
@@ -69,7 +105,7 @@
 							</a>
 	                    </div>
 	                    <div class="card-body">
-	                        <i class="fa-solid fa-heart" ></i>
+	                        <i sec:authorize="isAuthenticated()" class="fa-solid fa-heart" ></i>
 	                        <label th:if="${productItem.sale_price != 0}" style="text-decoration: line-through; font-size: 20px; color: red;" class="cash" th:text="${#numbers.formatDecimal(productItem.price, 0, 'POINT', 0, 'POINT')} + 'VNĐ'"></label>
 	                        <label th:if="${productItem.sale_price != 0}" class="cash" th:text="${#numbers.formatDecimal(productItem.sale_price, 0, 'POINT', 0, 'POINT')} + 'VNĐ'" style="font-size: 21px;"></label>
 	                        <label th:if="${productItem.sale_price == 0}"  class="cash" th:text="${#numbers.formatDecimal(productItem.price, 0, 'POINT', 0, 'POINT')} + 'VNĐ'"></label>
@@ -82,8 +118,61 @@
         </th:block>
 	</div>
             
-
             
+      <!-- ChatBot -->
+
+        <div class="container-chat-bot"  sec:authorize="isAuthenticated()" id="container-chat-bot">
+                <div class="content-chat-bot" id="example-chat">
+	                  <div class="detail-content">
+	                    <img class="content-img"  src="img/chatbot.jpg" alt="">
+	                  </div>
+	            
+	                  <div class="chatbot">
+	                    ChatBot
+	                    <div class="detail-chatbot">Xin chào nơi đây cung cấp những thông tin về các loại sản phẩm cửa hàng hiện có. Bạn muốn hỏi gì?</div>
+	                  </div>
+                </div>
+                
+                <div id="example-chat-customer" style="display: none;" class="content-customer">
+				    <div class="content-you">
+					    <div class="you">
+					      You
+					      <div class="detail-you">ok, cảm ơn nhiều</div>
+					    </div>
+				
+			    	<div class="detail-content">
+				     	 <img class="content-img-you"  th:src="'data:image/jpeg;base64,' + ${customer.image}">
+				    </div>
+				  </div>
+				</div>
+            
+
+              <div class="container-send" id="container-send">     
+	                <div>
+	                  <img class="container-send-you-img"  th:src="'data:image/jpeg;base64,' + ${customer.image}"  >
+	                </div> 
+	        
+	                <div>
+	                	<input class="send-input" type="text" placeholder="Send Messengers" id="message-customer">
+	                </div> 
+	        
+	                <div class="div-send">
+	                  	<i class="fa-solid fa-paper-plane" style="color: orange; font-size: 25px;" id="icon-send"></i>
+	                
+	                </div>
+        
+          	</div>   
+    	</div>
+            
+            
+                <div class="circle"  sec:authorize="isAuthenticated()">
+                 	<img class="circle-img" src="img/messenger.png" >
+                 
+                </div>
+                
+               
+
+              <!--Footer-->
     <div class="contact" id="contact">
         <div class="contact-box">
             <div class="contact-image">
@@ -106,6 +195,9 @@
         </div>
     </div>
 
+            
+   
+
 
     <div class="footer">
         <div class="footer-box">
@@ -125,5 +217,23 @@
 </body>
 
 	<script th:src="@{/js/favorite.js}"></script>
+	<script th:src="@{/js/chatbot.js}"></script>
+	<script th:src="@{/js/find-menu.js}"></script>
+	
+	 <script>
+		 		 let circle = document.querySelector('.circle');
+                  if(circle != null){
+					  circle.addEventListener('click', function() {
+	                    let element = document.querySelector('.container-chat-bot');
+	                    let style = window.getComputedStyle(element);
+	                    if(style.top == '90px'){
+	                      element.style.top = '1000px';
+	                    }else{
+	                      element.style.top = '90px';
+	                    }
+	                });
+				  }
+                
+        </script>
 
 </html>

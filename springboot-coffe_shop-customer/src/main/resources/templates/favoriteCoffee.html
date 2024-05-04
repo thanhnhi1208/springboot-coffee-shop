@@ -12,40 +12,7 @@
         <link rel="stylesheet" th:href="@{/CSS_COFFEE/menu.css}">
 </head>
 <body>
-    <header th:fragment="head">
-      <nav class="navbar">
-        <a class="logo" th:href="@{/index}">Coffee<span>.</span></a>
-        <ul class="menu-links">
-         
-          <li><a th:href="@{/index}">Trang Chủ</a></li>
-          <li><a th:href="@{/menu}">Thực Đơn</a></li>
-           <li sec:authorize="isAuthenticated()"><a  th:href="@{/favorite}">Yêu Thích Của Tôi</a></li>
-          <li>
-			  <a sec:authorize="isAuthenticated()" th:href="@{/shoppingCart}">
-			  	  <div class="div-totalItem">
-					  <i class="fa-solid fa-cart-plus" style="color: #ff0000;"></i>
-					  <span id="totalItem" th:text="${shoppingCart.totalItem}"></span>
-				  </div>
-		  	  </a>
-		  </li>
-		  <li>
-			  <div class="dropdown" sec:authorize="isAuthenticated()" >
-			  	  <img sec:authorize="isAuthenticated() == false" th:src="@{/img/avt-macdinh.jpg}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
-			  	  <img sec:authorize="isAuthenticated()" th:src="'data:image/jpeg;base64,' + ${customer.image}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
-				  <div class="dropdown-content">
-					<a th:href="@{/shipCoffee}" >Đơn Hàng</a>
-				    <a th:href="@{/profile}" >Tài Khoản</a>
-				    <a th:href="@{/logout}">Đăng Xuất</a>
-				    				    
-				  </div>
-		  	  </div>
-		  </li>
-
-        </ul>
-        
-      </nav>
-      
-    </header>
+    <header th:replace="~{_fragmentCoffee::head}"></header>
 
       <div class="container">
         <table id="table-favorite">

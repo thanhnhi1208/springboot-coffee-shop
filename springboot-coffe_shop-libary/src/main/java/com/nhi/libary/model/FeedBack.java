@@ -1,6 +1,8 @@
 package com.nhi.libary.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,9 +30,8 @@ public class FeedBack {
 	@Column(columnDefinition = "text")
 	private String image;
 	private String comment;
-	private int rating;
-	private int fbLike;
 	private LocalDate feedBack_date;
+	private List<String > imageTemp =new ArrayList<>();
 	
 	@ManyToOne
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")

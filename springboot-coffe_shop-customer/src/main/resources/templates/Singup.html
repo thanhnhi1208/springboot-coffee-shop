@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="CSS_COFFEE/singup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+		<div style="text-align: center;">
+			<p th:if="${notification != null}" style="color: red; text-align: center;" th:text="${notification}"></p>
+		</div>
+		
+		<form th:action="@{/signup/confirmRegister}" method="post">
+	        <div class="icon-signup">
+	        <img class="icon-img" th:src="@{/img/icon-coffee.webp}">
+	        <h2>SING UP</h2>
+	        </div>
+	
+	        <label for="Fullname"><b>Full Name</b></label>
+	        <input th:value="${fullName}" type="text" placeholder="Enter Full Name" name="fullName" required>
+	     
+	        <label for="Email"><b>Your Email</b></label>
+	        <input th:value="${email}" type="text" placeholder="Enter Your Email" name="email" required id="email">
+	        
+	        <a href="#" id="a-send-otp">Gửi mã OTP</a> <br> <br>
+			
+			<label for="Email"><b>OTP</b></label>
+	        <input th:value="${otp}" type="text" placeholder="Enter Your Email" name="Otp" required >
+			
+	        <label for="psw"><b>Password</b></label>
+	        <input th:value="${password}" type="password" placeholder="Enter Password" name="password" required>
+	        <div class="fb-gg">
+	            <div>
+	                <button class="fb">
+	                    <span class="facebook-span"></span>        
+	                    Sign Up With Facebook
+	                </button>
+	            </div>
+	
+	            <div>
+	                <button class="gg">
+	                    <span class="google-span"></span>
+	                    Sign Up With Google
+	                </button>
+	            </div>
+	        </div>
+	       
+	        <div class="button-signup-div">
+	            <button class="button-signup">SIGN UP</button>
+	        </div>
+        </form>
+        <div class="div-fotgot-password">
+          <a class="fotgot-password" th:href="@{/login}">Đăng nhập</a>
+        </div>
+    </div>
+    
+    <script th:src="@{/js/signup.js}"></script>
+</body>
+</html>

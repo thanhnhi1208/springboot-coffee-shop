@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function(){
 			.then(response=> response.json())
 			.then(boolean => {
 				if(boolean == true){
-					console.log(element)
 					element.style.color = 'yellow';
 				}else{
 					element.style.color = 'drakgray !important';

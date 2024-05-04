@@ -1,5 +1,7 @@
-greeting	hi hello shop ơi chào buổi sáng chào buổi trưa chào buổi tối 
-price-inquiry	giá cao nhất giá thấp nhất
+greeting	hi hello shop ơi chào buổi sáng chào buổi trưa chào buổi tối
+price-inquiry	giá cao nhất 
+low-price	giá thấp nhất
 conversation-continue	wow tuyệt
 conversation-complete	cảm ơn vì thông tin
-recommend	gợi ý uống gì món
+recommend	gợi ý uống gì món menu
+drink	coffee bánh trà cafe

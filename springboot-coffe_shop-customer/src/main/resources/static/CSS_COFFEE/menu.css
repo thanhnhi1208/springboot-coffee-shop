@@ -629,3 +629,150 @@ form .form-content input:valid~span::before {
   .fa-heart:active{
 	  scale: 1.0;
   }
+  
+  
+  /*Chatbot*/
+.container-chat-bot{
+    max-width: 400px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: fixed;
+    top: 1000px;
+    right: 20px;
+    transition: top 0.5s ease-in;
+    background-color: rgb(239, 239, 239);
+    border-radius: 5px;
+    padding: 0 20px 0 20px;
+    overflow-y: scroll;
+    max-height: 540px;
+    height: 552px;
+        overflow-x: hidden;
+
+  }
+  
+  .content-chat-bot{
+    display: flex;
+    background-color: rgb(249, 249, 249);
+    margin-top: 20px;
+    margin-right: 150px;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  .content-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
+  
+  .content-img-you{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
+  
+  .content-you{
+    display: flex;
+    background-color: rgb(248, 248, 248);
+    margin-top: 20px;
+    text-align: left; 
+    justify-content: flex-end;
+  }
+  
+  .chatbot{
+    margin-left: 20px;
+    font-size: 14px;
+    color: lightcoral;
+  }
+  
+  .detail-chatbot{
+    font-size: 16px;
+    color: black;
+    margin-top: 10px;
+  }
+  
+  .you, .content-img-you{
+  float: right;
+  }
+  
+  .you{
+    margin-right: 15px;
+    font-size: 14px;
+    color: orange;
+  }
+  
+  .detail-you{
+    font-size: 16px;
+    color: black;
+    margin-top: 10px;
+  }
+  
+  /* Gửi tin nhắn cho chatbot*/
+  .container-send{
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 100%;
+  }
+  
+  .container-send-you-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
+  
+  .send-input{
+    margin: 5px 20px 0 15px;
+    padding: 10px 50px 10px 8px;
+    border-radius: 10px;
+  }
+  
+  .div-send{
+    margin: 13px 40px 0 0;
+    cursor: pointer;
+  }
+
+  .div-send i:active {
+    scale: 1.1;
+  }
+  
+  .send-a{
+    text-decoration: none;
+    
+  }
+  /* hình tròn tin nhắn*/
+  .circle button{
+    font-size: 80px ;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 50px;
+  }
+
+  .circle img:active {
+    scale: 1.1;
+  }
+  
+  .circle {
+    position: fixed;
+    bottom: 20px; /* Điều chỉnh khoảng cách từ bottom của màn hình */
+    right: 20px; /* Điều chỉnh khoảng cách từ right của màn hình */
+    z-index: 9999; /* Để chắc chắn rằng phần tử hiển thị trên tất cả các phần tử khác */
+  }
+  
+  .circle-img {
+    width: 50px; /* Điều chỉnh kích thước của hình ảnh */
+    height: 50px;
+    border-radius: 50%; /* Để tạo ra hình tròn */
+    cursor: pointer;
+  }
+  
+  .content-customer {
+	  width: 100%;
+  }
+  
+  .input-find-menu{
+	  padding: 10px 15px;
+	  border-radius: 10px;
+	  border: 1px solid black;
+	  width: 300px;
+  }
+  
