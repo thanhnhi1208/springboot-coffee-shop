@@ -45,15 +45,15 @@ public class FavoriteService {
 		
 	}
 
-	public boolean findByCustomerAndProduct(String name, String tenSanPham) {
+	public String findByCustomerAndProduct(String name, String tenSanPham) {
 		Product product = this.productRepository.findByName(tenSanPham);
 		Customer customer = this.customerRepository.findByEmail(name);
 		Favorite favorite = this.favoriteRepository.findByProductAndCustomer(product, customer);
 		if(favorite != null) {
-			return true;
+			return "true";
 		}
 		
-		return false;
+		return "false";
 	}
 	
 	public List<Favorite> findByCustomer(String email){

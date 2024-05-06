@@ -45,7 +45,7 @@ public class FavoriteController {
 	
 	@GetMapping("/favorite/findByCustomeAndProduct")
 	@ResponseBody
-	public boolean findByCustomeAndProduct(Authentication authentication, String tenSanPham) {
+	public String findByCustomeAndProduct(Authentication authentication, String tenSanPham) {
 		return this.favoriteService.findByCustomerAndProduct(authentication.getName(), tenSanPham);
 	}
 }

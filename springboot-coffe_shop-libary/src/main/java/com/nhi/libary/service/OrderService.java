@@ -118,7 +118,15 @@ public class OrderService {
 	}
 	
 	public List<Order> findOrderSortDate(){
-		return this.orderRepository.findAllOrderByDate();
+		List<Order> newOrderList = new ArrayList<>();
+		
+		List<Order> orderList = this.orderRepository.findAllOrderByDate();
+		for (Order order : orderList) {
+			if(order.getDeliveryDate().isEqual(LocalDate.now()) == true) {
+				newOrderList.add(order);
+			}
+		}
+		return newOrderList;
 	}
 
 	public List<CartItem> findById(int id) {
